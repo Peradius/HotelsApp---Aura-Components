@@ -1,0 +1,10 @@
+<aura:component>
+    <aura:attribute name="hotel" type="Hotel__c"/>
+
+    <lightning:card title="{!v.hotel.Name}" iconName="standard:scan_card">
+        <aura:set attribute="footer">
+            <p>Rating: <lightning:formattedText value="{!v.hotel.Rating__c}"/></p>
+        </aura:set>
+
+    </lightning:card>
+</aura:component>

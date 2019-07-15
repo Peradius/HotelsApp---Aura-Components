@@ -1,0 +1,40 @@
+<aura:component controller="HotelRoomsListController">
+    <aura:handler event="c:sendHotelData" action="{!c.receiveHotelData}"/>
+    <!-- <aura:handler event="c:searchFilters" action="{!c.receiveFiltersData}" /> -->
+    <aura:attribute name="rooms" type="Room__c[]" />
+    
+    <!-- A list with all the Rooms associated with the specific Hotel retrieved by Apex Controller : getRooms() -->
+
+    <div class="slds-grid slds-grid_vertical">
+        <ul class="slds-has-dividers_around-space">
+
+            <aura:iteration items="{!v.rooms}" var="room">
+
+                <li class="slds-item">
+                    <article class="slds-tile slds-tile_board">
+                        <h1 class="slds-tile__title slds-truncate">
+                            <lightning:formattedText value="{!'Room no. ' + room.Name}" />
+                        </h1>
+
+                        <div class="slds-tile__detail">
+                            <p class="slds-text-heading_medium">
+                                <lightning:formattedNumber value="{!room.Price_for_Night__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+                            </p>
+
+                            <p class="slds-truncate">
+                                <lightning:formattedText value="{!room.Single_Beds__c + ' Single Beds | Double Beds ' + room.Double_Beds__c}" />
+                            </p>
+
+                            <p class="slds-truncate">
+                                <lightning:formattedText value="{!'Max. people in the room ' + room.Maximum_People_in_the_Room__c}" />
+                            </p>
+                            <p>
+                                <lightning:button name="Book" iconName="utility:delete" onclick="{!c.roomClicked}" value="{!room}"/>
+                            </p>
+                        </div>
+                    </article>
+                </li>
+            </aura:iteration>
+        </ul>
+    </div>           
+</aura:component>

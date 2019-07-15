@@ -1,0 +1,9 @@
+<aura:event type="APPLICATION">
+	<aura:attribute name="checkInDate" type="date" />
+    <aura:attribute name="checkOutDate" type="date" />
+    <aura:attribute name="singleBedsNum" type="Decimal" />
+    <aura:attribute name="doubleBedsNum" type="decimal" default="0"/>
+    <aura:attribute name="minimumPrice" type="decimal" />
+    <aura:attribute name="maximumPrice" type="decimal" />
+    <aura:attribute name="isExecutive" type="Boolean" />
+</aura:event>

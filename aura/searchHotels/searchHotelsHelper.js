@@ -1,0 +1,5 @@
+({
+    SearchHelper: function(component, event) {
+
+	}
+})

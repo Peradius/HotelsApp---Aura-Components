@@ -1,0 +1,24 @@
+<aura:component >
+    <aura:attribute name="checkInDate" type="date" />
+    <aura:attribute name="checkOutDate" type="date" />
+    <aura:attribute name="singleBedsNum" type="decimal" default="1" />
+    <aura:attribute name="doubleBedsNum" type="decimal" default="0"/>
+    <aura:attribute name="minimumPrice" type="decimal" />
+    <aura:attribute name="maximumPrice" type="decimal" />
+    <aura:attribute name="isExecutive" type="Boolean" default="false"/>
+
+    <aura:registerEvent name="updateSearchFilters" type="c:searchFilters" />
+
+    <lightning:input type="date" value="{!v.checkInDate}" label="Check-In Date" placeholder="Check-In Date" required="true"/>
+    <lightning:input type="date" value="{!v.checkOutDate}" label="Check-Out Date" placeholder="Check-Out Date" required="true"/>
+
+    <lightning:input type="number" label="Number of single beds" value="{!v.singleBedsNum}"/>
+    <lightning:input type="number" label="Number of double beds" value="{!v.doubleBedsNum}"/>
+
+    <lightning:input type="number" label="Minimum price per night" value="{!v.minimumPrice}"/>
+    <lightning:input type="number" label="Maximum price per night" value="{!v.maximumPrice}"/>
+
+    <lightning:input type="checkbox" label="Executive room" value="{!v.isExecutive}"/>
+
+    <lightning:button label="Search" title="Search a room" onclick="{!c.processFiltering}" variant="brand" />
+</aura:component>

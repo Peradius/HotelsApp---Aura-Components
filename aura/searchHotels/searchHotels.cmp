@@ -1,0 +1,30 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+                                <!-- THIS IS THE MAIN PAGE -->
+    <!-- HEADER -->
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+        <lightning:layoutItem>
+            <lightning:icon iconName="standard:approval" alternativeText="Search Hotel"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-small">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">Hotel</h1>
+                <h2 class="slds-text-heading--medium">Select Hotel</h2>
+            </div>
+        </lightning:layoutItem>
+        <!-- /HEADER -->
+    </lightning:layout>
+    
+    <lightning:layout>
+        <lightning:layoutItem>
+            <c:hotelDropdownList />
+        </lightning:layoutItem>
+
+        <lightning:layoutItem>
+            <c:filterBar />
+        </lightning:layoutItem>
+
+        <lightning:layoutItem>
+            <c:hotelRoomsList />
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>
