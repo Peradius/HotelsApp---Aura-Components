@@ -25,6 +25,6 @@
 			"hotel" : selectedHotel
 		});
 		hotelEvent.fire();
-		console.log("Hotel Event sent!");
+		console.log("Hotel Event from hotelDropdownListController sent!");
     }
 })

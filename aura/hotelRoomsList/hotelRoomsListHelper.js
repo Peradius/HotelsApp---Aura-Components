@@ -1,12 +1,11 @@
 ({
-	getRooms : function(component, Id) {
+	getRooms : function(component, Id, maximumPrice, peopleInRoom) {
 		var action = component.get("c.getRooms")
 		action.setParams({
-			"id" : Id
-			// "maxPrice" : maxPrice
+			"id" : Id,
+			"maxPrice" : maximumPrice,
+			"peopleInRoom" : peopleInRoom
 		});
-
-		console.log("getRooms: Id");
 
 		action.setCallback(this, function(response){
 			var state = response.getState();

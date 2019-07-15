@@ -1,6 +1,5 @@
 <aura:component controller="HotelRoomsListController">
-    <aura:handler event="c:sendHotelData" action="{!c.receiveHotelData}"/>
-    <!-- <aura:handler event="c:searchFilters" action="{!c.receiveFiltersData}" /> -->
+    <aura:handler event="c:searchFilters" action="{!c.receiveHotelData}"/>
     <aura:attribute name="rooms" type="Room__c[]" />
     
     <!-- A list with all the Rooms associated with the specific Hotel retrieved by Apex Controller : getRooms() -->
