@@ -3,7 +3,6 @@
     <aura:attribute name="checkInDate" type="date" />
     <aura:attribute name="checkOutDate" type="date" />
     <aura:attribute name="peopleInRoom" type="decimal" default="1" />
-    <!-- <aura:attribute name="minimumPrice" type="decimal" /> -->
     <aura:attribute name="maximumPrice" type="decimal" />
     <aura:attribute name="isExecutive" type="Boolean" default="false"/>
 
@@ -15,7 +14,6 @@
 
     <lightning:input type="number" label="People in the room" value="{!v.peopleInRoom}"/>
 
-    <!-- <lightning:input type="number" label="Minimum price per night" value="{!v.minimumPrice}"/> -->
     <lightning:input type="number" label="Maximum price per night" value="{!v.maximumPrice}"/>
 
     <lightning:input type="checkbox" label="Executive room" value="{!v.isExecutive}"/>

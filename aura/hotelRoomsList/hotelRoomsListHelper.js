@@ -1,10 +1,12 @@
 ({
-	getRooms : function(component, Id, maximumPrice, peopleInRoom) {
+	getRooms : function(component, Id, maximumPrice, peopleInRoom, checkInDate, checkOutDate) {
 		var action = component.get("c.getRooms")
 		action.setParams({
-			"id" : Id,
+			"hotelId" : Id,
 			"maxPrice" : maximumPrice,
-			"peopleInRoom" : peopleInRoom
+			"peopleInRoom" : peopleInRoom,
+			"checkIn" : checkInDate,
+			"checkOut" : checkOutDate
 		});
 
 		action.setCallback(this, function(response){
@@ -13,6 +15,8 @@
 				var rooms = action.getReturnValue();
 				component.set("v.rooms", rooms);
 				console.log("Component(Rooms) set!");
+			} else {
+				console.log("Error setting rooms");
 			}
 		});
 

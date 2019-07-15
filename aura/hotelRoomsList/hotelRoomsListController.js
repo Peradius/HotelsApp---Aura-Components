@@ -2,18 +2,20 @@
 	receiveHotelData : function(component, event, helper) {
 		console.log("Hotels Event received!");
 
-		var hotel = event.getParam("hotelId");
+		var hotelId = event.getParam("hotelId");
 		var checkInDate = event.getParam("checkInDate");
 		var checkOutDate = event.getParam("checkOutDate");
 		var peopleInRoom = event.getParam("peopleInRoom");
 		var maximumPrice = event.getParam("maximumPrice");
 		var isExecutive = event.getParam("isExecutive");
 
-		console.log("ReceiveHotelData hotelID: " + hotel);
+		console.log("ReceiveHotelData hotelID: " + hotelId);
 		console.log("ReceiveHotelData maximumPrice: " + maximumPrice);
 		console.log("ReceiveHotelData peopleInRoom: " + peopleInRoom);
+		console.log("ReceiveHotelData checkInDate: " + checkInDate);
+		console.log("ReceiveHotelData checkOutDate: " + checkOutDate);
 
-		helper.getRooms(component, hotel, maximumPrice, peopleInRoom);
+		helper.getRooms(component, hotelId, maximumPrice, peopleInRoom, checkInDate, checkOutDate);
 	},
 
 	receiveFiltersData : function(component, event, helper) {

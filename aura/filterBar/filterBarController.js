@@ -1,5 +1,4 @@
 ({
-
 	handleHotelEvent : function(component, event) {
 		var hotel = event.getParam("hotel");
 		component.set("v.hotel", hotel);
@@ -7,7 +6,7 @@
 	},
 
 	processFiltering : function(component, event, helper) {
-		var hotel = component.get("v.hotel").toString();
+		var hotel = component.get("v.hotel");
 		var checkInDate = component.get("v.checkInDate");
 		var checkOutDate = component.get("v.checkOutDate");
 		var peopleInRoom = component.get("v.peopleInRoom");
