@@ -1,4 +1,3 @@
 <aura:application extends="force:slds">
-  <c:searchHotels />
-   <c:guestBooking />
+    <c:searchHotels />
 </aura:application>

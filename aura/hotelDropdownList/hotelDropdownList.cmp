@@ -10,6 +10,9 @@
                                                     'Website__c': '' }" />
     <aura:registerEvent name="sendHotelData" type="c:sendHotelData" />
 
+
+
+
     <div class="slds-grid slds-grid_vertical">
         <div class="slds-col">
             <!-- A dropdown list with all the Hotels retrieved by Apex Controller : getHotels() -->
@@ -21,27 +24,33 @@
                 </aura:iteration>
             </lightning:select>
         </div>
-
-        <!-- HOTEL INFORMATIONS SECTION -->
-
-        <div class="slds-col">
-            <lightning:formattedText value="{!'Name: ' + v.chosenHotel.Name}" />
-        </div>
-        <div class="slds-col">
-            <lightning:formattedText value="{!'Address: ' + v.chosenHotel.Address__c + ', ' + v.chosenHotel.City__c}" />
-        </div>
-        <div class="slds-col">
-            <lightning:formattedPhone value="{!'Phone: ' + v.chosenHotel.Phone__c}" />
-        </div>
-        <div class="slds-col">
-            <lightning:formattedEmail value="{!'E-mail: ' + v.chosenHotel.Email__c}" />
-        </div>
-        <div class="slds-col">
-            <lightning:formattedText value="{!'Website: ' + v.chosenHotel.Website__c}" />
-        </div>
-
-        <!-- /HOTEL INFORMATIONS SECTION -->
-
     </div>
+
+
+
+
+    <div class="slds-grid">
+                                                            <!-- IMAGE AND INFO -->
+            <div class="slds-media slds-col slds-box slds-size_2-of-3">
+                <div class="slds-media__figure slds-col slds-size_1-of-3 slds-box">
+                    obrazek
+                </div>
+
+                <div class="slds-media__body slds-col slds-size_2-of-3 slds-box">
+                    <p> <lightning:formattedText value="{!'Name: ' + v.chosenHotel.Name}" /> </p>
+                    <p> <lightning:formattedText value="{!'Address: ' + v.chosenHotel.Address__c + ', ' + v.chosenHotel.City__c}" /> </p>
+                    <p> <lightning:formattedPhone value="{!'Phone: ' + v.chosenHotel.Phone__c}" /> </p>
+                    <p> <lightning:formattedEmail value="{!'E-mail: ' + v.chosenHotel.Email__c}" /> </p>
+                    <p> <lightning:formattedText value="{!'Website: ' + v.chosenHotel.Website__c}" /> </p>
+                </div>
+            </div>
+                                                            <!-- /IMAGE AND INFO -->
+                                                            <!-- RATING AND BUTTON -->
+            <div class="slds-col slds-box slds-size_1-of-3">
+                3 gwiazdki
+                Button
+            </div>
+                                                            <!-- /RATING AND BUTTON -->
+        </div>
 
 </aura:component>
