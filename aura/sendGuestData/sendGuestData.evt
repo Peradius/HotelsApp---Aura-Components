@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="guest" type="Guest__c" />
+</aura:event>

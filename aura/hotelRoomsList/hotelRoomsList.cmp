@@ -2,6 +2,8 @@
     <aura:handler event="c:searchFilters" action="{!c.receiveHotelData}"/>
     <aura:attribute name="rooms" type="Room__c[]" />
     <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <aura:registerEvent name="sendRoomData" type="c:sendRoomData" />
     
     <!-- A list with all the Rooms associated with the specific Hotel retrieved by Apex Controller : getRooms() -->
 

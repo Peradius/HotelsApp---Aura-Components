@@ -2,6 +2,7 @@
     <aura:attribute name="hasAccountToggle" type="boolean" default="false"/>
     <aura:attribute name="email" type="String" />
     <aura:attribute name="emailNotFound" type="boolean" default="false" />
+    <aura:attribute name="guest" type="Guest__c" />
     <aura:attribute name="newGuest" type="Guest__c" default="{
                     'sobjectType': 'Guest__c',
                     'First_Name__c' : '',
@@ -9,6 +10,8 @@
                     'hone__c' : '',
                     'Email__c' : ''
     }" />
+
+    <aura:registerEvent name="sendGuestData" type="c:sendGuestData" />
 
     <lightning:input type="toggle" label="I already have an account"
                     aura:id="accountToggle" checked="{!v.hasAccountToggle}" required="true" onchange="{!c.switchToggle}" />

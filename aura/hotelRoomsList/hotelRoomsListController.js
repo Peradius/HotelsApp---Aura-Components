@@ -19,8 +19,7 @@
 	},
 
 	bookThisRoom : function(component, event, helper) {
-		var roomId = event.getSource().get("v.value").Id;
-		console.log("Clicked: " + roomId);
-		   
+		var room = event.getSource().get("v.value");
+		helper.sendEvent(room);
 	}
 })

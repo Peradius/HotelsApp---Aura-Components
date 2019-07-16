@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:attribute name="guest" type="Guest__c" />
+    <aura:attribute name="room" type="Room__c" />
+
+</aura:component>
