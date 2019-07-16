@@ -10,5 +10,17 @@
             var newGuest = component.get("v.newGuest");
             helper.createGuest(component, newGuest);
         }
+    },
+
+    checkForEmail : function(component, event, helper) {
+        var emailValue = component.get("v.email");
+        console.log("Entered email: " + emailValue);
+        helper.findEmail(component, emailValue);
+    },
+
+    switchToggle : function(component, event, helper) {
+        var toggleValue = component.find("accountToggle");
+        component.set("v.newGuestsAccount", toggleValue);
+        console.log("Toggle: " + toggleValue);
     }
 })

@@ -1,4 +1,7 @@
 <aura:component controller="GuestBookingController">
+    <aura:attribute name="hasAccountToggle" type="boolean" default="false"/>
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="emailNotFound" type="boolean" default="false" />
     <aura:attribute name="newGuest" type="Guest__c" default="{
                     'sobjectType': 'Guest__c',
                     'First_Name__c' : '',
@@ -7,21 +10,42 @@
                     'Email__c' : ''
     }" />
 
-    <form class="slds-form--stacked"> 
-        <lightning:input aura:id="guestform" label="First Name" 
-                        value="{!v.newGuest.First_Name__c}" required="true"/>
+    <lightning:input type="toggle" label="I already have an account"
+                    aura:id="accountToggle" checked="{!v.hasAccountToggle}" required="true" onchange="{!c.switchToggle}" />
 
-        <lightning:input aura:id="guestform" label="Last Name" 
-                        value="{!v.newGuest.Last_Name__c}" required="true"/>
+    <!-- User has an account -->
+    <aura:renderIf isTrue="{!v.hasAccountToggle}">
+        <form class="slds-form--stacked"> 
+            <lightning:input aura:id="emailValidation" label="Enter email" 
+                            value="{!v.email}" required="true"/>
+            <lightning:button label="Submit" onclick="{!c.checkForEmail}" variant="brand" />
+        </form>
+        <aura:renderIf isTrue="{!v.emailNotFound}">
+            <div style="color: red; font: 15px">
+                    Email {!v.email} wasn't found! Try again or create a new account!
+            </div>
+        </aura:renderIf>
+    </aura:renderIf>
+    <!-- /User has an account -->
+                    
+    <!-- User has no account -->
+    <aura:renderIf isTrue="{! !(v.hasAccountToggle)}">
+        <form class="slds-form--stacked"> 
+            <lightning:input aura:id="guestform" label="First Name" 
+                            value="{!v.newGuest.First_Name__c}" required="true"/>
 
-        <lightning:input aura:id="guestform" type="tel" label="Telephone" 
-                        value="{!v.newGuest.Phone__c}" />
+            <lightning:input aura:id="guestform" label="Last Name" 
+                            value="{!v.newGuest.Last_Name__c}" required="true"/>
 
-        <lightning:input aura:id="guestform" type="email" label="E-Mail" 
-                        value="{!v.newGuest.Email__c}" required="true"/>
+            <lightning:input aura:id="guestform" type="tel" label="Telephone" 
+                            value="{!v.newGuest.Phone__c}" />
 
-        <lightning:button label="Submit" onclick="{!c.createNewGuest}" variant="brand" />
-    </form>
+            <lightning:input aura:id="guestform" type="email" label="E-Mail" 
+                            value="{!v.newGuest.Email__c}" required="true"/>
 
+            <lightning:button label="Submit" onclick="{!c.createNewGuest}" variant="brand" />
+        </form>
+    </aura:renderIf>
+    <!-- /User has no account -->
     
 </aura:component>
