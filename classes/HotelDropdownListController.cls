@@ -12,19 +12,4 @@ public with sharing class HotelDropdownListController {
                 WHERE Id = :id 
                 LIMIT 1];
     }
-	
-
-    // @AuraEnabled
-    // public static List<Room__c> getRooms(Id id) {
-    //     // Perform isAccessible() checking first, then
-    //     return [SELECT Name, Single_Beds__c, Double_Beds__c, Price_for_Night__c, Maximum_People_in_the_Room__c
-    //             FROM Room__c WHERE Id = :id];
-    // }
-    
-    // @AuraEnabled
-    // public static Expense__c saveExpense(Expense__c expense) {
-    //     // Perform isUpdateable() checking first, then
-    //     upsert expense;
-    //     return expense;
-    // }
 }

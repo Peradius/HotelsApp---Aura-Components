@@ -18,12 +18,9 @@
 		helper.getRooms(component, hotelId, maximumPrice, peopleInRoom, checkInDate, checkOutDate);
 	},
 
-	receiveFiltersData : function(component, event, helper) {
-		console.log("Filters Event received!");
-	},
-
-	roomClicked : function(component, event, helper) {
+	bookThisRoom : function(component, event, helper) {
 		var roomId = event.getSource().get("v.value").Id;
 		console.log("Clicked: " + roomId);
+		   
 	}
 })

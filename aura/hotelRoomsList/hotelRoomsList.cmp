@@ -1,6 +1,7 @@
 <aura:component controller="HotelRoomsListController">
     <aura:handler event="c:searchFilters" action="{!c.receiveHotelData}"/>
     <aura:attribute name="rooms" type="Room__c[]" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
     
     <!-- A list with all the Rooms associated with the specific Hotel retrieved by Apex Controller : getRooms() -->
 
@@ -28,7 +29,7 @@
                                 <lightning:formattedText value="{!'Max. people in the room ' + room.Maximum_People_in_the_Room__c}" />
                             </p>
                             <p>
-                                <lightning:button name="Book" iconName="utility:delete" onclick="{!c.roomClicked}" value="{!room}"/>
+                                <lightning:button name="Book" iconName="utility:delete" onclick="{!c.bookThisRoom}" value="{!room}"/>
                             </p>
                         </div>
                     </article>

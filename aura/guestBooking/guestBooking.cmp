@@ -1,0 +1,27 @@
+<aura:component controller="GuestBookingController">
+    <aura:attribute name="newGuest" type="Guest__c" default="{
+                    'sobjectType': 'Guest__c',
+                    'First_Name__c' : '',
+                    'Last_Name__c' : '',
+                    'hone__c' : '',
+                    'Email__c' : ''
+    }" />
+
+    <form class="slds-form--stacked"> 
+        <lightning:input aura:id="guestform" label="First Name" 
+                        value="{!v.newGuest.First_Name__c}" required="true"/>
+
+        <lightning:input aura:id="guestform" label="Last Name" 
+                        value="{!v.newGuest.Last_Name__c}" required="true"/>
+
+        <lightning:input aura:id="guestform" type="tel" label="Telephone" 
+                        value="{!v.newGuest.Phone__c}" />
+
+        <lightning:input aura:id="guestform" type="email" label="E-Mail" 
+                        value="{!v.newGuest.Email__c}" required="true"/>
+
+        <lightning:button label="Submit" onclick="{!c.createNewGuest}" variant="brand" />
+    </form>
+
+    
+</aura:component>
