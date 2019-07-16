@@ -50,5 +50,7 @@
         </form>
     </aura:renderIf>
     <!-- /User has no account -->
+
+    <c:roomBooking />
     
 </aura:component>

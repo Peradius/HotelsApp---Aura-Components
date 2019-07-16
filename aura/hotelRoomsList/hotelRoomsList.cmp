@@ -1,7 +1,6 @@
 <aura:component controller="HotelRoomsListController">
     <aura:handler event="c:searchFilters" action="{!c.receiveHotelData}"/>
     <aura:attribute name="rooms" type="Room__c[]" />
-    <lightning:overlayLibrary aura:id="overlayLib"/>
 
     <aura:registerEvent name="sendRoomData" type="c:sendRoomData" />
     

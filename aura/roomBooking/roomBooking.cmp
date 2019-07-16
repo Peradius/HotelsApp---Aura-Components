@@ -1,5 +1,29 @@
-<aura:component >
-    <aura:attribute name="guest" type="Guest__c" />
-    <aura:attribute name="room" type="Room__c" />
+<aura:component controller="RoomBookingController">
+    <aura:attribute name="guest" type="Guest__c" default="{
+        'sobjectType': 'Guest__c',
+        'First_Name__c' : '',
+        'Last_Name__c' : '',
+        'hone__c' : '',
+        'Email__c' : ''
+    }"/>
+    <aura:attribute name="room" type="Room__c" default="{
+        'sobjectType': 'Room__c',
+        'Name' : '',
+        'Price_for_Night__c' : 0,
+        'Single_Beds__c' : 0,
+        'Double_Beds__c' : 0,
+        'Hotel__c' : '',
+        'Maximum_People_in_the_Room__c' : 0,
+        'Executive_Room__c' : false
+    }"/>
 
+    <aura:attribute name="receivedAllData" type="Boolean" default="false" />
+
+    <aura:handler event="c:sendGuestData" action="{!c.handleGuestEvent}" />
+    <aura:handler event="c:sendRoomData" action="{!c.handleRoomEvent}" />
+
+    <!-- <aura:renderIf isTrue="v.receivedAllData" > -->
+            Hello {!v.guest.First_Name__c}!
+            Thank you for booking {!v.room.Name}!
+    <!-- </aura:renderIf> -->
 </aura:component>

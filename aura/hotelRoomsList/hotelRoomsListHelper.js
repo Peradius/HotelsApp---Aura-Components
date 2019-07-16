@@ -25,7 +25,7 @@
 
 	sendEvent : function(room) {
 		var sendRoomDataEvent = $A.get("e.c:sendRoomData");
-		console.log("sendRoomData room: " + room.Single_Beds__c);
+		console.log("sendRoomData room: " + room.Name);
 		sendRoomDataEvent.setParams({
 			"room" : room
 		});
