@@ -18,7 +18,6 @@
     
     selectHotel: function(component, event, helper) {
         var selectedHotel = event.getSource().get("v.value");
-        helper.getHotelById(component, selectedHotel);
 
         var hotelEvent = $A.get("e.c:sendHotelData");
 		hotelEvent.setParams({

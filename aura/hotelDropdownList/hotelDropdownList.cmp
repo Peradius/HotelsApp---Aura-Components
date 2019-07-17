@@ -1,56 +1,46 @@
 <aura:component controller="HotelDropdownListController" >
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:attribute name="hotels" type="Hotel__c[]"/>
-    <aura:attribute name="chosenHotel" type="Hotel__c" default="{ 
-                                                    'sobjectType': 'Hotel__c',
-                                                    'Name': 'Please select a hotel',
-                                                    'Address_c': '',
-                                                    'Phone__c': '',
-                                                    'Email__c': '',
-                                                    'Website__c': '' }" />
     <aura:registerEvent name="sendHotelData" type="c:sendHotelData" />
 
+                                                            <!-- START OF A PAGE -->
+    <aura:iteration items="{!v.hotels}" var="hotel">
 
-
-
-    <div class="slds-grid slds-grid_vertical">
-        <div class="slds-col">
-            <!-- A dropdown list with all the Hotels retrieved by Apex Controller : getHotels() -->
-            <!-- OnChange retrieves a single hotel using Apex Controller : getSingleHotel({!hotel.Id}) -->
-            <lightning:select aura:id="hotelDropList" name="selectHotel" label="Select a Hotel" 
-                                                    required="true" onchange="{!c.selectHotel}">
-                <aura:iteration items="{!v.hotels}" var="hotel">
-                    <option value="{!hotel.Id}" text="{!hotel.Name}"></option>
-                </aura:iteration>
-            </lightning:select>
-        </div>
-    </div>
-
-
-
-
-    <div class="slds-grid">
+        <div class="slds-grid">
                                                             <!-- IMAGE AND INFO -->
-            <div class="slds-media slds-col slds-box slds-size_2-of-3">
+            <div class="slds-media slds-col slds-box slds-size_5-of-6">
                 <div class="slds-media__figure slds-col slds-size_1-of-3 slds-box">
                     obrazek
                 </div>
 
                 <div class="slds-media__body slds-col slds-size_2-of-3 slds-box">
-                    <p> <lightning:formattedText value="{!'Name: ' + v.chosenHotel.Name}" /> </p>
-                    <p> <lightning:formattedText value="{!'Address: ' + v.chosenHotel.Address__c + ', ' + v.chosenHotel.City__c}" /> </p>
-                    <p> <lightning:formattedPhone value="{!'Phone: ' + v.chosenHotel.Phone__c}" /> </p>
-                    <p> <lightning:formattedEmail value="{!'E-mail: ' + v.chosenHotel.Email__c}" /> </p>
-                    <p> <lightning:formattedText value="{!'Website: ' + v.chosenHotel.Website__c}" /> </p>
+                    <p> <lightning:formattedText value="{!'Name: ' + hotel.Name}" /> </p>
+                    <p> <lightning:formattedText value="{!'Address: ' + hotel.Address__c + ', ' + hotel.City__c}" /> </p>
+                    <p> <lightning:formattedPhone value="{!'Phone: ' + hotel.Phone__c}" /> </p>
+                    <p> <lightning:formattedEmail value="{!'E-mail: ' + hotel.Email__c}" /> </p>
+                    <p> <lightning:formattedText value="{!'Website: ' + hotel.Website__c}" /> </p>
                 </div>
             </div>
                                                             <!-- /IMAGE AND INFO -->
                                                             <!-- RATING AND BUTTON -->
-            <div class="slds-col slds-box slds-size_1-of-3">
-                3 gwiazdki
-                Button
+            <div class="slds-col slds-box slds-size_1-of-6">
+                <p>
+                    <div class="slds-media slds-col slds-grow slds-box slds-theme_shade ">
+                        <div class="slds-media__body slds-align_absolute-center">
+                            <h1 class="slds-text-heading_large">{!hotel.Rating__c}</h1>
+                        </div>
+                        <div class="slds-media__figure slds-align_left">
+                            <lightning:icon iconName="utility:favorite" size="medium" alternativeText="Star"/>
+                        </div>
+                    </div>
+                </p>
+                
+                <p class="slds-align_absolute-center">
+                    <lightning:button variant="brand" label="Select" onclick="{! c.selectHotel }" value="{!hotel}" /> 
+                </p>
             </div>
-                                                            <!-- /RATING AND BUTTON -->
+                                                                <!-- /RATING AND BUTTON -->
         </div>
+    </aura:iteration>       
 
 </aura:component>
