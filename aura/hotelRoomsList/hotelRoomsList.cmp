@@ -4,6 +4,7 @@
     <aura:attribute name="checkInDate" type="date" />
     <aura:attribute name="checkOutDate" type="date" />
     <aura:attribute name="peopleInRoom" type="decimal" />
+    <aura:attribute name="totalDays" type="decimal" />
 
     <aura:handler event="c:basicFilters" action="{!c.receiveBasicFilterData}"/>
     <aura:handler event="c:searchFilters" action="{!c.receiveAdditionalFilterData}"/>
@@ -11,37 +12,42 @@
     
     
     <!-- A list with all the Rooms associated with the specific Hotel retrieved by Apex Controller : getRooms() -->
+    <aura:iteration items="{!v.rooms}" var="room">
 
-    <div class="slds-grid slds-grid_vertical">
-        <ul class="slds-has-dividers_around-space">
+        <div class="slds-grid">
+                                                    <!-- IMAGE AND INFO -->
+            <div class="slds-media slds-col slds-box slds-size_5-of-6">
+                <div class="slds-media__figure slds-col slds-size_1-of-3 slds-box">
+                    obrazek
+                </div>
 
-            <aura:iteration items="{!v.rooms}" var="room">
-
-                <li class="slds-item">
-                    <article class="slds-tile slds-tile_board">
-                        <h1 class="slds-tile__title slds-truncate">
-                            <lightning:formattedText value="{!'Room no. ' + room.Name}" />
-                        </h1>
-
-                        <div class="slds-tile__detail">
-                            <p class="slds-text-heading_medium">
-                                <lightning:formattedNumber value="{!room.Price_for_Night__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
-                            </p>
-
-                            <p class="slds-truncate">
-                                <lightning:formattedText value="{!room.Single_Beds__c + ' Single Beds | Double Beds ' + room.Double_Beds__c}" />
-                            </p>
-
-                            <p class="slds-truncate">
-                                <lightning:formattedText value="{!'Max. people in the room ' + room.Maximum_People_in_the_Room__c}" />
-                            </p>
-                            <p>
-                                <lightning:button name="Book" iconName="utility:delete" onclick="{!c.bookThisRoom}" value="{!room}"/>
-                            </p>
+                <div class="slds-media__body slds-col slds-size_2-of-3 slds-box">
+                    <p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no.: ' + room.Name}" /> </p>
+                    <p class="slds-text-body_small"> <lightning:formattedText value="{!'Single beds: ' + room.Single_Beds__c}" /> </p>
+                    <p class="slds-text-body_small"> <lightning:formattedText value="{!'Double beds: ' + room.Double_Beds__c}" /> </p>
+                    <p class="slds-text-body_small">
+                        <lightning:formattedText value="Price for night: " />
+                        <lightning:formattedNumber value="{!room.Price_for_Night__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+                    </p>
+                </div>
+            </div>
+                                                            <!-- /IMAGE AND INFO -->
+                                                            <!-- PRICE AND BUTTON -->
+            <div class="slds-col slds-box slds-size_1-of-6">
+                <p>
+                    <div class="slds-media slds-col slds-grow slds-box slds-theme_shade ">
+                        <div class="slds-media__body slds-align_absolute-center">
+                            <h1 class="slds-text-heading_large">
+                                <lightning:formattedNumber value="{!v.totalDays * room.Price_for_Night__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+                            </h1>
                         </div>
-                    </article>
-                </li>
-            </aura:iteration>
-        </ul>
-    </div>           
+                    </div>
+                </p>
+                
+                <p class="slds-align_absolute-center">
+                    <lightning:button variant="brand" label="Book" onclick="{! c.bookThisRoom }" value="{!room}" /> 
+                </p>
+            </div>
+        </div>
+    </aura:iteration>
 </aura:component>
