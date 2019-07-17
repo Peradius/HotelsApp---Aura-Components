@@ -20,6 +20,8 @@
 			var state = response.getState();
 			if (state === "SUCCESS") {
 				console.log("Component(Guest) set!");
+				console.log("Guest name " + guest.First_Name__c);
+				component.set("v.guest", guest);
 				this.sendGuestData(component);
 			} else {
 				console.log("Error setting guests");

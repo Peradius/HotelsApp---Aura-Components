@@ -4,8 +4,10 @@
 
     <aura:registerEvent name="updateSearchFilters" type="c:searchFilters" />
 
-    <lightning:input type="number" label="Maximum price per night" value="{!v.maximumPrice}"/>
-    <lightning:input type="checkbox" label="Executive room" value="{!v.isExecutive}"/>
-
-    <lightning:button label="Filter" title="Filter" onclick="{!c.processFiltering}" variant="brand" />
+        <lightning:input type="number" label="Maximum price per night" value="{!v.maximumPrice}"/>
+    <hr />
+        <lightning:input type="checkbox" label="Executive room" value="{!v.isExecutive}"/>
+    <p class="slds-align_absolute-center slds-m-top--large">
+        <lightning:button label="Filter" title="Filter" onclick="{!c.processFiltering}" variant="brand" />
+    </p>
 </aura:component>

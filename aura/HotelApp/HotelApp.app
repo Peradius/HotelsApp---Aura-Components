@@ -1,5 +1,8 @@
 <aura:application extends="force:slds">
-    <c:searchHotels />
+    <c:summaryPopup />
+    <!-- <c:searchHotels />
     <hr />
     <c:searchRooms />
+    <hr />
+    <c:bookingSummary /> -->
 </aura:application>
