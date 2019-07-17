@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="hotelId" type="String" />
+    <aura:attribute name="checkInDate" type="Date" />
+    <aura:attribute name="checkOutDate" type="Date" />
+    <aura:attribute name="peopleInRoom" type="Decimal" />
+</aura:event>

@@ -1,4 +1,5 @@
 <aura:component >
 	<p>Minimum rating:</p>
     <p>City:</p>
+    <p>Button</p>
 </aura:component>

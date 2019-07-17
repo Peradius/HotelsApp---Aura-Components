@@ -1,0 +1,55 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+        <aura:attribute name="hotel" type="Hotel__c" />
+        <aura:attribute name="checkInDate" type="date" />
+        <aura:attribute name="checkOutDate" type="date" />
+        <aura:attribute name="peopleInRoom" type="decimal" default="1" />
+
+        <aura:handler event="c:sendHotelData" action="{!c.handleHotelData}" />
+        <aura:registerEvent name="sendBasicFilters" type="c:basicFilters"/>
+        
+
+    <div class="slds-scope">
+                                                <!-- HEADER -->
+        <div class="slds-page-header slds-grid">
+            <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
+                <div class="slds-media__figure">
+                        <lightning:icon iconName="standard:home" alternativeText="Search Room" size="large" />
+                </div>
+                <div class="slds-media__body">
+                    <p class="slds-text-title_caps slds-line-height_reset">HotelApp</p>
+                    <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">Select a Room</h1>
+                </div>
+            </div>
+        </div>
+                                                <!-- /HEADER -->
+                                                <!-- CENTER (FILTERS) -->
+        <div class="slds-page-body slds-box">
+            <div class="slds-grid slds-p-around_medium slds-box">
+                <div class="slds-col">
+                    <lightning:input type="date" value="{!v.checkInDate}" placeholder="Check-In Date" required="true" onchange="{!c.updateFiltersTop}"/>
+                </div>
+                <div class="slds-col">
+                    <lightning:input type="date" value="{!v.checkOutDate}" placeholder="Check-Out Date" required="true" onchange="{!c.updateFiltersTop}"/>
+                </div>
+                <div class="slds-col">
+                    <lightning:input type="number" value="{!v.peopleInRoom}" label="People in the room" required="true" onchange="{!c.updateFiltersTop}"/>
+                </div>
+            </div>
+        </div>
+                                                <!-- /CENTER (FILTERS) -->
+
+        <div class="slds-grid slds-p-around_medium">
+                                                <!-- LEFT (FILTERS) -->
+            <div class="slds-col slds-size_1-of-6 slds-box slds-theme_shade">
+                <c:filterBar />
+            </div>
+                                                <!-- /LEFT (FILTERS) -->
+                                                <!-- CENTER (ROOMS) -->
+            <div class="slds-col slds-size_5-of-6 slds-box slds-theme_shade">
+                <c:hotelRoomsList />
+            </div>
+                                                <!-- /CENTER (ROOMS) -->
+
+        </div>
+    </div>
+</aura:component>
