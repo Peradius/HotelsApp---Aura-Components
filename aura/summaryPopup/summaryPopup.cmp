@@ -1,22 +1,76 @@
 <aura:component >
-    <div>
+    <aura:attribute name="hotel" type="Hotel__c" />
+    <aura:attribute name="guest" type="Guest__c" />
+    <aura:attribute name="room" type="Room__c" />
+
+    <aura:handler event="c:sendHotelData" action="handleHotelDataEvent" />
+    <aura:handler event="c:sendRoomData" action="handleRoomDataEvent" />
+    <aura:handler event="c:sendGuestData" action="handleGuestDataEvent" />
+
+
+    <div class="slds-scope">
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
-                <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-                        <span class="slds-assistive-text">Close</span>
-                    </button>
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal Header</h2>
-                </header>
-                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                    <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
-                        quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-                    <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt nostrud
-                        ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                                                        <!-- MODAL HEADER -->
+                <div class="slds-modal__content slds-p-around_small slds-grid">
+                    <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
+                        <div class="slds-media__figure">
+                                <lightning:icon iconName="standard:home" alternativeText="Booking Summary" size="large" />
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-text-title_caps slds-line-height_reset">Hotel Zabierzów | Room No. 169</p>
+                            <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">Confirm booking</h1>
+                        </div>
+                    </div>
                 </div>
+                                                         <!--/ MODAL HEADER -->
+
+                                             <!-- HOTEL INFO -->
+                <div class="slds-modal__content slds-p-around_medium slds-grid">
+                    <div class="slds-grow slds-box slds-theme_shade" >
+                        <p class="slds-text-heading_medium">
+                            Hotel Info
+                        </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Name: ' + v.hotel.Name}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Address: ' + v.hotel.Address__c + ', ' + v.hotel.City__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedPhone value="{!'Phone: ' + v.hotel.Phone__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedEmail value="{!'E-mail: ' + v.hotel.Email__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Website: ' + v.hotel.Website__c}" /> </p>
+                    </div>  
+                </div>
+                                            <!-- /HOTEL INFO -->
+                                            <!-- ROOM INFO -->
+                <div class="slds-modal__content slds-p-around_small slds-grid">
+                    <div class="slds-truncate slds-grow slds-box slds-theme_shade" >
+                        <p class="slds-text-heading_medium">
+                            Room Info
+                        </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Room no.: ' + v.room.Name}" /> </p>
+                        <p class="slds-text-body_small">
+                                <lightning:formattedText value="Price for night: " />
+                                <lightning:formattedNumber value="{!v.room.Price_for_Night__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+                        </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Single beds: ' + v.room.Single_Beds__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Double beds: ' + v.room.Double_Beds__c}" /> </p>   
+                    </div>  
+                </div>
+                                                <!-- /ROOM INFO -->
+                                                <!-- USER INFO -->
+                <div class="slds-modal__content slds-p-around_medium slds-grid">
+                    <div class="slds-no-space slds-grow slds-box slds-theme_shade" >
+                        <p class="slds-text-heading_medium">
+                            User Info
+                        </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Full Name: ' + v.guest.First_Name__c + ' ' + v.guest.Last_Name__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Phone: ' + v.guest.Phone__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Email: ' + v.guest.Email__c}" /> </p>
+                    </div>  
+                </div>
+                                                <!-- /USER INFO -->
+
                 <footer class="slds-modal__footer">
-                    <button class="slds-button slds-button_neutral">Cancel</button>
-                    <button class="slds-button slds-button_brand">Save</button>
+                    <button class="slds-button slds-button_neutral" onclick="{!c.cancelBooking}">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick="{!c.confirmBooking}">Confirm</button>
                 </footer>
             </div>
         </section>

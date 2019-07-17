@@ -16,11 +16,15 @@
         var emailValue = component.get("v.email");
         console.log("Entered email: " + emailValue);
         helper.findEmail(component, emailValue);
+        this.displayPopup();
     },
 
     switchToggle : function(component, event, helper) {
         var toggleValue = component.find("accountToggle");
         component.set("v.newGuestsAccount", toggleValue);
-        console.log("Toggle: " + toggleValue);
+    },
+
+    displayPopup : function(component, event, helper) {
+
     }
 })
