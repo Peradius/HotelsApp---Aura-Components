@@ -1,7 +1,7 @@
 <aura:application extends="force:slds">
     <aura:attribute name="pageOneOpened" type="boolean" default="true" />
     <aura:attribute name="pageTwoOpened" type="boolean" default="false" />
-    <aura:attribute name="pageThreeOpened" type="boolean" default="false" />
+    <aura:attribute name="pageThreeOpened" type="boolean" default="true" />
     <aura:attribute name="pageFourOpened" type="boolean" default="false" />
 
     <aura:attribute name="hotel" type="Hotel__c" />

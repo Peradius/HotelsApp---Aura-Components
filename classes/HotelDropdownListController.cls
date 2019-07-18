@@ -5,7 +5,7 @@ public with sharing class HotelDropdownListController {
             rating = 1;
         }
 
-        List<Hotel__c> allHotels = [SELECT Id, Name, Address__c, City__c, Phone__c, Email__c, Rating__c, Website__c
+        List<Hotel__c> allHotels = [SELECT Id, Name, Address__c, City__c, Phone__c, Email__c, Rating__c, Website__c, Photo__c
                 FROM Hotel__c
                 WHERE (Rating__c  >= :rating)];
 

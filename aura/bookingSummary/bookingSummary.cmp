@@ -23,28 +23,28 @@
         </div>
                                                 <!-- /HEADER -->
 
-        <div class="slds-grid slds-p-around_medium slds-box">
+        <div class="slds-grid slds-p-around_medium ">
                                                 <!-- LEFT (HOTEL SUMMARY) -->
             <div class="slds-media slds-col slds-size_1-of-2 slds-box slds-theme_shade">
-                <div class="slds-media__body slds-col slds-size_2-of-3 slds-box">
-                    <p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Name: ' + v.hotel.Name}" /> </p>
+                <div class="slds-media__body slds-col slds-size_2-of-3">
+                    <p class="slds-text-heading_medium"> <lightning:formattedText value="{!v.hotel.Name}" /> </p>
                     <p class="slds-text-body_small"> <lightning:formattedText value="{!'Address: ' + v.hotel.Address__c + ', ' + v.hotel.City__c}" /> </p>
                     <p class="slds-text-body_small"> <lightning:formattedPhone value="{!'Phone: ' + v.hotel.Phone__c}" /> </p>
                     <p class="slds-text-body_small"> <lightning:formattedEmail value="{!'E-mail: ' + v.hotel.Email__c}" /> </p>
                     <p class="slds-text-body_small"> <lightning:formattedText value="{!'Website: ' + v.hotel.Website__c}" /> </p>
                 </div>
-                <div class="slds-media__figure slds-col slds-size_1-of-3 slds-box">
-                    Obrazek hotelu
+                <div class="slds-media__figure slds-col slds-size_1-of-3">
+                    <lightning:formattedRichText value="{!v.hotel.Photo__c}" />
                 </div>
             </div>
                                                 <!-- /LEFT (HOTEL SUMMARY) -->
                                                 <!-- RIGHT(ROOM SUMMARY) -->
             <div class="slds-media slds-col slds-size_1-of-2 slds-box slds-theme_shade">
-                <div class="slds-media__figure slds-col slds-size_1-of-3 slds-box">
-                    Obrazek pokoju
+                <div class="slds-media__figure slds-col slds-size_1-of-3">
+                    <lightning:formattedRichText value="{!v.room.Photo__c}" />
                 </div>    
-                <div class="slds-media__body slds-col slds-size_2-of-3 slds-box">
-                    <p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no.: ' + v.room.Name}" /> </p>
+                <div class="slds-media__body slds-col slds-size_2-of-3">
+                    <p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no. ' + v.room.Name}" /> </p>
                     <p class="slds-text-body_small"> <lightning:formattedText value="{!'Single beds: ' + v.room.Single_Beds__c}" /> </p>
                     <p class="slds-text-body_small"> <lightning:formattedText value="{!'Double beds: ' + v.room.Double_Beds__c}" /> </p>
                     <p class="slds-text-body_small">
@@ -57,8 +57,8 @@
         </div>
                                                 <!-- BOTTOM(USER DATA) -->
                                                 
-        <div class="slds-grid slds-p-around_medium slds-box">
-            <div class="slds-col slds-box">
+        <div class="slds-grid slds-p-around_medium">
+            <div class="slds-col">
                 <c:guestBooking />
             </div>
         </div>

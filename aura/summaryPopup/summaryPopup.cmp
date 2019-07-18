@@ -37,8 +37,8 @@
                         </p>
                         <p class="slds-text-body_small"> <lightning:formattedText value="{!'Name: ' + v.hotel.Name}" /> </p>
                         <p class="slds-text-body_small"> <lightning:formattedText value="{!'Address: ' + v.hotel.Address__c + ', ' + v.hotel.City__c}" /> </p>
-                        <p class="slds-text-body_small"> <lightning:formattedPhone value="{!'Phone: ' + v.hotel.Phone__c}" /> </p>
-                        <p class="slds-text-body_small"> <lightning:formattedEmail value="{!'E-mail: ' + v.hotel.Email__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'Phone: ' + v.hotel.Phone__c}" /> </p>
+                        <p class="slds-text-body_small"> <lightning:formattedText value="{!'E-mail: ' + v.hotel.Email__c}" /> </p>
                         <p class="slds-text-body_small"> <lightning:formattedText value="{!'Website: ' + v.hotel.Website__c}" /> </p>
                     </div>  
                 </div>

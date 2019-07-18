@@ -13,23 +13,31 @@
         <div class="slds-grid">
                                                             <!-- IMAGE AND INFO -->
             <div class="slds-media slds-col slds-box slds-size_5-of-6">
-                <div class="slds-media__figure slds-col slds-size_1-of-3 slds-box">
-                    obrazek
+                <div class="slds-media__figure slds-col slds-size_1-of-3 ">
+                    <lightning:formattedRichText value="{!hotel.Photo__c}" />
                 </div>
 
-                <div class="slds-media__body slds-col slds-size_2-of-3 slds-box">
+                <div class="slds-media__body slds-col slds-size_2-of-3 ">
                     <p> <lightning:formattedText value="{!'Name: ' + hotel.Name}" /> </p>
                     <p> <lightning:formattedText value="{!'Address: ' + hotel.Address__c + ', ' + hotel.City__c}" /> </p>
-                    <p> <lightning:formattedPhone value="{!'Phone: ' + hotel.Phone__c}" /> </p>
-                    <p> <lightning:formattedEmail value="{!'E-mail: ' + hotel.Email__c}" /> </p>
-                    <p> <lightning:formattedText value="{!'Website: ' + hotel.Website__c}" /> </p>
+                    <p> 
+                        Phone:
+                        <lightning:formattedPhone value="{!hotel.Phone__c}" /> </p>
+                    <p> 
+                        E-mail:
+                        <lightning:formattedEmail value="{!hotel.Email__c}" />
+                    </p>
+                    <p> 
+                        Website:
+                        <lightning:formattedUrl value="{!hotel.Website__c}" /> 
+                    </p>
                 </div>
             </div>
                                                             <!-- /IMAGE AND INFO -->
                                                             <!-- RATING AND BUTTON -->
             <div class="slds-col slds-box slds-size_1-of-6">
                 <p>
-                    <div class="slds-media slds-col slds-grow slds-box slds-theme_shade ">
+                    <div class="slds-media slds-col slds-grow slds-theme_shade ">
                         <div class="slds-media__body slds-align_absolute-center">
                             <h1 class="slds-text-heading_large">{!hotel.Rating__c}</h1>
                         </div>
@@ -39,7 +47,7 @@
                     </div>
                 </p>
                 
-                <p class="slds-align_absolute-center">
+                <p class="slds-m-around_large slds-align_absolute-center">
                     <lightning:button variant="brand" label="Select" onclick="{! c.selectHotel}" value="{!hotel}" /> 
                 </p>
             </div>

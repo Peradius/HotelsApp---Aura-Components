@@ -28,6 +28,16 @@
         var checkOut = component.get("v.checkOut");
 
         helper.createReservation(component, guest, room, checkIn, checkOut);
+
+        alert("Reservation successful!");
+        var traverseEvent = $A.get("e.c:pageTraverseEvent");
+        traverseEvent.setParams({
+            "pageOne" : true,
+            "pageTwo" : false,
+            "pageThree" : false,
+            "pageFour" : false
+        });
+        traverseEvent.fire();
     },
 
     cancelBooking : function(component, event, helper) {

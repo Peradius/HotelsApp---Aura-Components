@@ -23,8 +23,8 @@
         </div>
                                                 <!-- /HEADER -->
                                                 <!-- CENTER (FILTERS) -->
-        <div class="slds-page-body slds-box">
-            <div class="slds-grid slds-p-around_medium slds-box">
+        <div class="slds-page-body">
+            <div class="slds-grid slds-p-around_medium">
                 <div class="slds-col">
                     <lightning:input type="date" value="{!v.checkInDate}" placeholder="Check-In Date" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
