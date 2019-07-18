@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="hotel" type="Hotel__c" />
+    <aura:attribute name="room" type="Room__c" />
+    <aura:attribute name="guest" type="Guest__c" />
+</aura:event>

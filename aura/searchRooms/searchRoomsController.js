@@ -1,5 +1,6 @@
 ({
 	handleHotelData : function(component, event) {
+		console.log("handleHotelData started!");
 		var hotel = event.getParam("hotel");
 		component.set("v.hotel", hotel);
 		console.log("Hotel in searchRoomsController set!");

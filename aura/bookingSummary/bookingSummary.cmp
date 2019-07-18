@@ -6,6 +6,7 @@
     <aura:handler event="c:sendRoomData" action="{!c.receiveRoomData}"/>
 
     <aura:registerEvent name="sendConfirmationData" type="c:sendConfirmationData" />
+       
 
     <div class="slds-scope">
                                                 <!-- HEADER -->

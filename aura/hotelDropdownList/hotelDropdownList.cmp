@@ -1,7 +1,9 @@
 <aura:component controller="HotelDropdownListController" >
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:attribute name="hotels" type="Hotel__c[]"/>
+    
     <aura:registerEvent name="sendHotelData" type="c:sendHotelData" />
+    <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
 
                                                             <!-- START OF A PAGE -->
     <aura:iteration items="{!v.hotels}" var="hotel">
@@ -36,7 +38,7 @@
                 </p>
                 
                 <p class="slds-align_absolute-center">
-                    <lightning:button variant="brand" label="Select" onclick="{! c.selectHotel }" value="{!hotel}" /> 
+                    <lightning:button variant="brand" label="Select" onclick="{! c.selectHotel}" value="{!hotel}" /> 
                 </p>
             </div>
                                                                 <!-- /RATING AND BUTTON -->

@@ -6,6 +6,7 @@
     <aura:handler event="c:sendHotelData" action="handleHotelDataEvent" />
     <aura:handler event="c:sendRoomData" action="handleRoomDataEvent" />
     <aura:handler event="c:sendGuestData" action="handleGuestDataEvent" />
+    <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
 
 
     <div class="slds-scope">

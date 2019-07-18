@@ -9,6 +9,7 @@
     <aura:handler event="c:basicFilters" action="{!c.receiveBasicFilterData}"/>
     <aura:handler event="c:searchFilters" action="{!c.receiveAdditionalFilterData}"/>
     <aura:registerEvent name="sendRoomData" type="c:sendRoomData" />
+    <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
     
     
     <!-- A list with all the Rooms associated with the specific Hotel retrieved by Apex Controller : getRooms() -->

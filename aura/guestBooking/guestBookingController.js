@@ -8,7 +8,7 @@
         if(validGuest){
             // Create new guest
             var newGuest = component.get("v.newGuest");
-            helper.createGuest(component, newGuest);
+            this.sendPageTraverseEvent();
         }
     },
 
@@ -16,7 +16,7 @@
         var emailValue = component.get("v.email");
         console.log("Entered email: " + emailValue);
         helper.findEmail(component, emailValue);
-        this.displayPopup();
+        this.sendPageTraverseEvent();
     },
 
     switchToggle : function(component, event, helper) {
@@ -24,7 +24,14 @@
         component.set("v.newGuestsAccount", toggleValue);
     },
 
-    displayPopup : function(component, event, helper) {
-
+    sendPageTraverseEvent : function(component, event, helper) {
+        var traverseEvent = $A.get("e.c:pageTraverseEvent");
+        traverseEvent.setParams({
+            "pageOne" : false,
+            "pageTwo" : false,
+            "pageThree" : false,
+            "pageFour" : true
+        });
+        traverseEvent.fire();
     }
 })

@@ -23,7 +23,17 @@
 		hotelEvent.setParams({
 			"hotel" : selectedHotel
 		});
-		hotelEvent.fire();
-		console.log("Hotel Event from hotelDropdownListController sent!");
+        hotelEvent.fire();
+        console.log("Hotel Event from hotelDropdownListController sent!");
+        
+        var traverseEvent = $A.get("e.c:pageTraverseEvent");
+        traverseEvent.setParams({
+            "pageOne" : false,
+            "pageTwo" : true,
+            "pageThree" : false,
+            "pageFour" : false
+        });
+        traverseEvent.fire();
+		console.log("Page Traverse Event from hotelDropdownListController sent!");
     }
 })

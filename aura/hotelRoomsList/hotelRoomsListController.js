@@ -50,5 +50,14 @@
 	bookThisRoom : function(component, event, helper) {
 		var room = event.getSource().get("v.value");
 		helper.sendEvent(room);
+
+		var traverseEvent = $A.get("e.c:pageTraverseEvent");
+        traverseEvent.setParams({
+            "pageOne" : false,
+            "pageTwo" : false,
+            "pageThree" : true,
+            "pageFour" : false
+        });
+        traverseEvent.fire();
 	}
 })

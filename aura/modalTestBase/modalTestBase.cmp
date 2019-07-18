@@ -1,0 +1,90 @@
+<aura:component controller="PopupFormC"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="PageHeading" type="String" default="MODAL POPUP" />
+    <aura:attribute name="mydata" type="List"/>
+    <aura:attribute name="accdata" type="List"/>
+    <aura:attribute name="mydata1" type="List"/>
+    <aura:attribute name="accForm" type="Account" default="{'sobjectType' : 'Account'}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" />
+    <aura:handler event="force:refreshView" action="{!c.doinit}" />
+    
+    <div class="slds-m-top--xx-large">
+        <div class="slds-page-header">
+            <div class="slds-align--absolute-center">
+                <div class="slds-text-heading--large">       
+                    {!v.PageHeading}
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/> <br/>
+    
+    <lightning:button label="Create Account PopUp"
+                      iconName="utility:new_window"
+                      iconPosition="left"
+                      variant="brand"
+                      onclick="{!c.newPopup}"
+                      />
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox1" class="slds-modal slds-modal_large">
+        <div class="slds-modal__container" style="width: 65%;">
+            <div class="slds-modal__header">
+                ACCOUNT
+            </div>
+            
+            <div class="slds-modal__content slds-p-around--medium">
+                <div class="slds-p-left_xx-large slds-p-right_xx-large">
+                    <div class="slds-page-header" style="padding-top: 9px; padding-bottom: 9px;, padding-right: 9px;, padding-left: 10px;">
+                        <h3 style="font-size: 1rem;" title="">Account Information</h3>
+                    </div> 
+                </div>    
+                <div class="slds-grid slds-p-top_medium">
+                    <div class="slds-size_6-of-12 slds-p-left_xx-large slds-p-horizontal_x-large " >
+                        <lightning:input label="Account Name" name="myname" value="{!v.accForm.Name}"/> 
+                    </div>
+                    <div class="slds-size_5-of-12 slds-p-left_xx-small slds-p-horizontal_x-large " >
+                        <lightning:input label="Phone" name="myname" value="{!v.accForm.Phone}"/> 
+                    </div>
+                </div>
+                <div class="slds-grid slds-p-top_x-small">
+                    <div class="slds-size_6-of-12 slds-p-left_xx-large slds-p-horizontal_x-large " >
+                        <lightning:input label="Account Number" name="mynumber" value="{!v.accForm.AccountNumber}"/> 
+                    </div>
+                    <div class="slds-size_5-of-12 slds-p-left_xx-small slds-p-horizontal_x-large " >
+                        <lightning:input label="Description" name="myphone" value="{!v.accForm.Description}"/> 
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <lightning:button label="Save" onclick="{!c.saveModal}" />
+                <lightning:button label="close" onclick="{!c.closeNewModal}" />
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Accounts</span>
+        </h3>
+        <br/>
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.mydata}" var="row" indexVar="index">
+                    <tr>
+                        <th scope="row"><div class="slds-truncate" title="{!row.Name}">{!row.Name}</div></th>
+                        <td><div class="slds-truncate" title="{!row.Phone}">{!row.Phone}</div></td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

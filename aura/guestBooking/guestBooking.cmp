@@ -12,6 +12,8 @@
     }" />
 
     <aura:registerEvent name="sendGuestData" type="c:sendGuestData" />
+    <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
+    
 
     <div class="slds-scope">
         <div class="slds-grid slds-p-around_medium slds-box">
@@ -60,8 +62,5 @@
             </div>
             <!-- /RIGHT(FORM) -->
         </div>
-
-    <c:roomBooking />
-    
     </div>  
 </aura:component>

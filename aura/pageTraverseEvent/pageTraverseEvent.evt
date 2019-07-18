@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Used for traversing the pages of an app">
+    <aura:attribute name="pageOne" type="Boolean" />
+    <aura:attribute name="pageTwo" type="Boolean" />
+    <aura:attribute name="pageThree" type="Boolean" />
+    <aura:attribute name="pageFour" type="Boolean" />
+</aura:event>

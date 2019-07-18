@@ -28,6 +28,5 @@
                                             <!-- /CENTER (HOTELS) -->
 
     </div>
-    <!-- <c:hotelRoomsList /> -->
 </div>
 </aura:component>
