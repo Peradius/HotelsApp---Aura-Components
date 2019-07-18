@@ -4,7 +4,6 @@
     
     <aura:registerEvent name="sendHotelData" type="c:sendHotelData" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
-
                                                             <!-- START OF A PAGE -->
     <aura:iteration items="{!v.hotels}" var="hotel">
 

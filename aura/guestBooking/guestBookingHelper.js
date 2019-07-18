@@ -52,5 +52,16 @@
 		});
 
 		$A.enqueueAction(action);
-	}
+	},
+
+	sendPageTraverseEvent : function() {
+        var traverseEvent = $A.get("e.c:pageTraverseEvent");
+        traverseEvent.setParams({
+            "pageOne" : false,
+            "pageTwo" : false,
+            "pageThree" : false,
+            "pageFour" : true
+        });
+        traverseEvent.fire();
+    }
 })
