@@ -1,9 +1,12 @@
 <aura:component controller="HotelDropdownListController" >
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:attribute name="hotels" type="Hotel__c[]"/>
+    <aura:attribute name="minimumRating" type="decimal" />
+    <aura:attribute name="city" type="String" />
     
     <aura:registerEvent name="sendHotelData" type="c:sendHotelData" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
+    <aura:handler event="c:hotelFilters" action="{!c.handleHotelFilters}" />
                                                             <!-- START OF A PAGE -->
     <aura:iteration items="{!v.hotels}" var="hotel">
 

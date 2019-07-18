@@ -1,19 +1,6 @@
 ({
 	doInit: function(component, event, helper) {
-        // Create the action
-        var action = component.get("c.getHotels");
-        // Add callback behavior for when response is received
-        action.setCallback(this, function(response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                component.set("v.hotels", response.getReturnValue());
-            }
-            else {
-                console.log("Failed with state: " + state);
-            }
-        });
-        // Send action off to be executed
-        $A.enqueueAction(action);
+        helper.queryHotels(component, null, null);
     },
     
     selectHotel: function(component, event, helper) {
@@ -35,5 +22,15 @@
         });
         traverseEvent.fire();
 		console.log("Page Traverse Event from hotelDropdownListController sent!");
+    },
+
+    handleHotelFilters : function(component, event, helper) {
+        var rating = event.getParam("rating");
+        var city = event.getParam("city");
+        
+        component.set("v.minimumRating", rating);
+        component.set("v.city", city);
+
+        helper.queryHotels(component, rating, city);
     }
 })

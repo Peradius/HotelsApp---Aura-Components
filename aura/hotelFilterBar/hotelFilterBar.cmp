@@ -1,5 +1,14 @@
 <aura:component >
-	<p>Minimum rating:</p>
-    <p>City:</p>
-    <p>Button</p>
+    <aura:attribute name="minimumRating" type="decimal" default="1" />
+    <aura:attribute name="city" type="String" />
+
+    <aura:registerEvent name="updateHotelFilters" type="c:hotelFilters" />
+
+    <lightning:input type="number" label="Minimum rating" max="5" min="1" value="{!v.minimumRating}"/>
+    <hr />
+    <lightning:input type="text" label="City" value="{!v.city}"/>
+
+    <p class="slds-align_absolute-center slds-align-bottom slds-m-top--large">
+        <lightning:button label="Filter" title="Filter" onclick="{!c.processFiltering}" variant="brand" />
+    </p>
 </aura:component>
