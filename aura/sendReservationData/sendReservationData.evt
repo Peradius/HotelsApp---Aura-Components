@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="checkIn" type="Date" />
+    <aura:attribute name="checkOut" type="Date" />
+</aura:event>

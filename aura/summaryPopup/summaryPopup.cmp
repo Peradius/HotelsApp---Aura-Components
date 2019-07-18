@@ -1,13 +1,15 @@
-<aura:component >
+<aura:component controller="SummaryPopupController">
     <aura:attribute name="hotel" type="Hotel__c" />
     <aura:attribute name="guest" type="Guest__c" />
     <aura:attribute name="room" type="Room__c" />
+    <aura:attribute name="checkIn" type="Date" />
+    <aura:attribute name="checkOut" type="Date" />
 
     <aura:handler event="c:sendHotelData" action="handleHotelDataEvent" />
     <aura:handler event="c:sendRoomData" action="handleRoomDataEvent" />
     <aura:handler event="c:sendGuestData" action="handleGuestDataEvent" />
+    <aura:handler event="c:sendReservationData" action="handleReservationDataEvent" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
-
 
     <div class="slds-scope">
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
@@ -19,8 +21,9 @@
                                 <lightning:icon iconName="standard:home" alternativeText="Booking Summary" size="large" />
                         </div>
                         <div class="slds-media__body">
-                            <p class="slds-text-title_caps slds-line-height_reset">Hotel Zabierzów | Room No. 169</p>
+                            <p class="slds-text-title_caps slds-line-height_reset">{!v.hotel.Name} | {!v.room.Name}</p>
                             <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">Confirm booking</h1>
+                            <h2 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">{!v.checkIn} - {!v.checkOut}</h2>
                         </div>
                     </div>
                 </div>

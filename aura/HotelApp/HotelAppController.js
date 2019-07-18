@@ -24,5 +24,12 @@
 	handleGuestDataEvent : function(component, event, helper) {
 		var guest = event.getParam("guest");
 		component.set("v.guest", guest);
-	}
+	},
+
+	handleReservationDataEvent :  function(component, event, helper){
+        var checkIn = event.getParam("checkIn");
+        var checkOut = event.getParam("checkOut");
+        component.set("v.checkIn", checkIn);
+        component.set("v.checkOut", checkOut);
+    },
 })

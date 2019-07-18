@@ -1,15 +1,4 @@
 ({
-	sendGuestData : function(component) {
-		var sendGuestDataEvent = $A.get("e.c:sendGuestData");
-		var guest = component.get("v.guest");
-		console.log("sendGuestData guest: " + guest.First_Name__c);
-		sendGuestDataEvent.setParams({
-			"guest" : guest
-		});
-		sendGuestDataEvent.fire();
-		console.log("Send Guest Data Event sent!");
-	},
-
 	createGuest : function(component, guest) {
 		var action = component.get("c.createGuest");
 		action.setParams({
@@ -22,7 +11,8 @@
 				console.log("Component(Guest) set!");
 				console.log("Guest name " + guest.First_Name__c);
 				component.set("v.guest", guest);
-				this.sendGuestData(component);
+				this.sendGuestData(guest);
+				this.sendPageTraverseEvent(component);
 			} else {
 				console.log("Error setting guests");
 				console.log(response);
@@ -39,11 +29,15 @@
 
 		action.setCallback(this, function(response){
 			var state = response.getState();
+			console.log(state);
 			if (state === "SUCCESS") {
 				console.log("Email found!");
-				component.set("v.guest", response.getReturnValue());
+				var guest = response.getReturnValue();
+				component.set("v.guest", guest);
 				component.set("v.emailNotFound", false);
-				this.sendGuestData(component);
+				console.log("It's : " + component.get("v.guest").First_Name__c);
+				this.sendGuestData(guest);
+				this.sendPageTraverseEvent(component);
 			} else {
 				console.log("Email " + emailValue + " not found!");
 				console.log(response);
@@ -52,6 +46,16 @@
 		});
 
 		$A.enqueueAction(action);
+	},
+
+	sendGuestData : function(guest) {
+		var sendGuestDataEvent = $A.get("e.c:sendGuestData");
+		console.log(guest);
+		sendGuestDataEvent.setParams({
+			"guest" : guest
+		});
+		sendGuestDataEvent.fire();
+		console.log("Send Guest Data Event sent!");
 	},
 
 	sendPageTraverseEvent : function() {

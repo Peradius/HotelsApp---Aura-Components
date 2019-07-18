@@ -22,8 +22,6 @@
 		component.set("v.peopleInRoom", peopleInRoom);
 		component.set("v.totalDays", totalDays);
 
-
-
 		helper.getRooms(component, hotelId, null, peopleInRoom, checkInDate, checkOutDate);
 	},
 
@@ -49,7 +47,25 @@
 
 	bookThisRoom : function(component, event, helper) {
 		var room = event.getSource().get("v.value");
-		helper.sendEvent(room);
+
+		var sendRoomDataEvent = $A.get("e.c:sendRoomData");
+		console.log("sendRoomData room: " + room.Name);
+		sendRoomDataEvent.setParams({
+			"room" : room
+		});
+		sendRoomDataEvent.fire();
+		console.log("Send Room Data Event sent!");
+
+		var checkIn = component.get("v.checkInDate");
+		var checkOut = component.get("v.checkOutDate");;
+
+		var sendReservationDataEvent = $A.get("e.c:sendReservationData");
+		sendReservationDataEvent.setParams({
+			"checkIn" : checkIn, 
+			"checkOut" : checkOut
+		});
+		sendReservationDataEvent.fire();
+		console.log("Send Reservation Data Event sent!");
 
 		var traverseEvent = $A.get("e.c:pageTraverseEvent");
         traverseEvent.setParams({

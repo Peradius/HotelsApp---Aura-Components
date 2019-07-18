@@ -9,7 +9,6 @@
             // Create new guest
             var newGuest = component.get("v.newGuest");
             helper.createGuest(component, newGuest);
-            helper.sendPageTraverseEvent(component);
         }
     },
 
@@ -17,7 +16,7 @@
         var emailValue = component.get("v.email");
         console.log("Entered email: " + emailValue);
         helper.findEmail(component, emailValue);
-        helper.sendPageTraverseEvent();
+        // helper.sendPageTraverseEvent();
     },
 
     switchToggle : function(component, event, helper) {

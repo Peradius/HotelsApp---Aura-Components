@@ -6,10 +6,14 @@
 
     <aura:attribute name="hotel" type="Hotel__c" />
     <aura:attribute name="room" type="Room__c" />
+    <aura:attribute name="guest" type="Guest__c" />
+    <aura:attribute name="checkIn" type="Date" />
+    <aura:attribute name="checkOut" type="Date" />
 
     <aura:handler event="c:sendHotelData" action="{!c.handleHotelDataEvent}"/>
     <aura:handler event="c:sendRoomData" action="{!c.handleRoomDataEvent}"/>
     <aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}"/>
+    <aura:handler event="c:sendReservationData" action="{!c.handleReservationDataEvent}"/>
     <aura:handler event="c:pageTraverseEvent" action="{!c.handlePageTraverseEvent}"/>
 
                             <!-- pageOne : c:searchHotels
@@ -30,7 +34,8 @@
     </aura:if>
 
     <aura:if isTrue="{!v.pageFourOpened}" >
-        <c:summaryPopup hotel="{!v.hotel}" room="{!v.room}" guest="{!v.guest}"/>
+        <c:summaryPopup hotel="{!v.hotel}" room="{!v.room}" guest="{!v.guest}" 
+            checkIn="{!v.checkIn}" checkOut="{!v.checkOut}"/>
     </aura:if>
     
 </aura:application>

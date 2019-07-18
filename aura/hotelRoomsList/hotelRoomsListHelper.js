@@ -21,15 +21,5 @@
 		});
 
 		$A.enqueueAction(action);
-	},
-
-	sendEvent : function(room) {
-		var sendRoomDataEvent = $A.get("e.c:sendRoomData");
-		console.log("sendRoomData room: " + room.Name);
-		sendRoomDataEvent.setParams({
-			"room" : room
-		});
-		sendRoomDataEvent.fire();
-		console.log("Send Room Data Event sent!");
 	}
 })

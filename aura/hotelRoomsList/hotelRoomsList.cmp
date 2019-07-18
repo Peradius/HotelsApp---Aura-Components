@@ -9,6 +9,7 @@
     <aura:handler event="c:basicFilters" action="{!c.receiveBasicFilterData}"/>
     <aura:handler event="c:searchFilters" action="{!c.receiveAdditionalFilterData}"/>
     <aura:registerEvent name="sendRoomData" type="c:sendRoomData" />
+    <aura:registerEvent name="sendReservationData" type="c:sendReservationData" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
     
     

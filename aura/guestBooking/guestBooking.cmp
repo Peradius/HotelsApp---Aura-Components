@@ -5,6 +5,7 @@
     <aura:attribute name="guest" type="Guest__c" />
     <aura:attribute name="newGuest" type="Guest__c" default="{
                     'sobjectType': 'Guest__c',
+                    'Name' : '',
                     'First_Name__c' : '',
                     'Last_Name__c' : '',
                     'Phone__c' : '',
