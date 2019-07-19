@@ -5,6 +5,7 @@
         <aura:attribute name="peopleInRoom" type="decimal" default="1" />
 
         <aura:handler event="c:sendHotelData" action="{!c.handleHotelData}" />
+        
         <aura:registerEvent name="sendBasicFilters" type="c:basicFilters"/>
         
 

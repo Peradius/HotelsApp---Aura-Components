@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:registerEvent name="changeMainPageEvent" type="c:changeMainPageEvent" />
+
+    <p class="slds-align_absolute-center slds-m-top--large">
+        <lightning:button label="Book a Room" title="Book a Room" onclick="{!c.bookRoomClicked}" variant="brand" />
+    </p>
+
+    <p class="slds-align_absolute-center slds-m-top--large">
+        <lightning:button label="View your Account" title="View your Account" onclick="{!c.viewAccountClicked}" variant="brand" />
+    </p>
+</aura:component>

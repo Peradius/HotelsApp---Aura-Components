@@ -1,0 +1,11 @@
+<aura:component >
+	This is userMenu component!
+	1.Logujemy się do konta za pomocą maila
+	2. Wyświetla nam się lista naszych rezerwacji
+	3. Możemy kliknąć obiekt listy i wyświetlą nam się szczegóły rezerwacji oraz koszt do 
+	zapłaty ostatniego dnia
+	4. W szczegółach mamy informacje o rezerwacji i listę usług danego hotelu
+	5. Przy liście usług może kliknąć dodaj
+	6. Usługa dodaje się do naszego koszyka
+	7. Podczas check-out (ostatni dzień pobytu) płacimy za usługę
+</aura:component>

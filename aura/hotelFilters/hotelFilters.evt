@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="rating" type="decimal" />
+    <aura:attribute name="city" type="String" />
+</aura:event>

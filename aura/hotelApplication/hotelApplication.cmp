@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="mainMenuOpened" type="boolean" default="true" />
+    <aura:attribute name="userMenuOpened" type="boolean" default="false" />
+
+    <aura:handler event="c:changeMainPageEvent" action="{!c.handleChangePageEvent}"/>
+
+    <aura:if isTrue="{!v.mainMenuOpened}" >
+        <c:mainMenu />
+    </aura:if>
+
+    <aura:if isTrue="{!v.userMenuOpened}" >
+        <c:userMenu />
+    </aura:if>
+</aura:component>

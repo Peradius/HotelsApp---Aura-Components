@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <description>Displays the components based on wheter user wants to book the hotel or login into its account and do some interactions</description>
+</AuraDefinitionBundle>

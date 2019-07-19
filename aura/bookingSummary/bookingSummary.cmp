@@ -5,9 +5,6 @@
     <aura:handler event="c:sendHotelData" action="{!c.receiveHotelData}"/>
     <aura:handler event="c:sendRoomData" action="{!c.receiveRoomData}"/>
 
-    <aura:registerEvent name="sendConfirmationData" type="c:sendConfirmationData" />
-       
-
     <div class="slds-scope">
                                                 <!-- HEADER -->
         <div class="slds-page-header slds-grid">

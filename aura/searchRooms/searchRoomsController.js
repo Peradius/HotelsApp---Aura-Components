@@ -1,11 +1,4 @@
 ({
-	handleHotelData : function(component, event) {
-		console.log("searchRoomsController received Hotel Data!");
-		var hotel = event.getParam("hotel");
-		component.set("v.hotel", hotel);
-		console.log("Hotel in searchRoomsController set!");
-	},
-
 	updateFiltersTop : function(component, event, helper) {
 		console.log(component.get("v.hotel").Id);
 		console.log(component.get("v.checkInDate"));
