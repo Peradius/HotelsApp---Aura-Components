@@ -4,6 +4,8 @@
 
     <aura:handler event="c:changeMainPageEvent" action="{!c.handleChangePageEvent}"/>
 
+    <c:userInteractions />
+
     <aura:if isTrue="{!v.mainMenuOpened}" >
         <c:mainMenu />
     </aura:if>

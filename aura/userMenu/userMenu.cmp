@@ -1,7 +1,9 @@
 <aura:component controller="UserMenuController" >
 	<aura:attribute name="guest" type="Guest__c" />
 	<aura:attribute name="loggedIn" type="Boolean" default="false" />
-	<aura:attribute name="reservations" type="Object[]" />
+	<aura:attribute name="reservations" type="Reservation__c" />
+	<aura:attribute name="services" type="Service__c" />
+	<aura:attribute name="showReservationDetails" type="Boolean" default="false" />
 
 	<aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}" />
 
@@ -24,6 +26,9 @@
 							<p class="slds-text-body-regular"> <lightning:formattedText value="{!'Last Name: ' + v.guest.Last_Name__c}" /> </p>
 							<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Phone: ' + v.guest.Phone__c}" /> </p>
 							<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Email: ' + v.guest.Email__c}" /> </p>
+							<p class="slds-text-body-regular" style="color: crimson">Current charge:
+									<lightning:formattedNumber value="{!v.guest.Charge__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+							</p>
 							<hr />
 							<div class="slds-grid">
 									<div class="slds-col slds-align-left slds-align-bottom"><lightning:button label="Change User Data" title="Change user data" onclick="{! c.changeUserData}" disabled="true" /></div>
@@ -47,6 +52,7 @@
 											<p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no. ' + reservation.Room__r.Name}" /> </p>
 											<p class="slds-text-body_regular"> <lightning:formattedText value="{! reservation.Check_In__c + ' - ' + reservation.Check_Out__c}" /> </p>
 											<p class="slds-text-body_small"> <lightning:formattedText value="{! 'Single beds: ' + reservation.Room__r.Single_Beds__c + ' | Double beds: ' + reservation.Room__r.Double_Beds__c}" /> </p>
+											<p><lightning:button label="Show details" title="Show details" onclick="{!c.clickReservation}" value="{!reservation}" /></p>
 										</div>
 									</div>
 																					<!-- /IMAGE AND INFO -->
@@ -54,6 +60,31 @@
 							</aura:iteration>
 						</div>
 					</div>
+																					<!-- RESERVATION DETAILS -->
+					<aura:if isTrue="{! v.showReservationDetails}">
+						
+						<div class="slds-size_1-of-1">
+							<div class="slds-p-around_small slds-theme_shade">
+								<p class="slds-text-heading_large">
+									Hotel's services
+								</p>
+								<hr />
+								<aura:iteration items="{!v.services}" var="service">
+									<div class="slds-grid">
+											<div class="slds-box slds-size_1-of-1">
+												<p class="slds-text-heading_medium"> <lightning:formattedText value="{! service.Name}" /> </p>
+												<p class="slds-text-body_regular"> <lightning:formattedText value="{! 'Price: ' + service.Price__c}" /> </p>
+												<p class="slds-text-body_small"> <lightning:formattedText value="{! service.Description__c}" /> </p>
+												<p><lightning:button label="Order" title="Buy service" onclick="{!c.orderService}" value="{!service}" /></p>
+											</div>
+										
+									</div>
+								</aura:iteration>
+							</div>
+						</div>
+
+					</aura:if>
+																					<!-- /RESERVATION DETAILS -->
 				</div>
 			</div>
 
