@@ -1,3 +1,3 @@
-<aura:application extends="force:slds" implements="flexipage:availableForAllPageTypes">
+<aura:application extends="force:slds">
 <c:hotelApplication />
 </aura:application>

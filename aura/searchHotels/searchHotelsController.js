@@ -4,9 +4,7 @@
        var action = component.get("c.getRooms");
        var hotelDropList = component.find("hotelDropList");
 
-
        var hotelID = hotelDropList.get("v.Hotel__c.Id");
-
        
        action.setParams({Id : hotelID});
        // Add callback behavior for when response is received
@@ -39,7 +37,5 @@
         });
         // Send action off to be executed
         $A.enqueueAction(action);
-    },
-
-
+    }
 })
