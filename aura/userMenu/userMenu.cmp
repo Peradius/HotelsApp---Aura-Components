@@ -1,5 +1,72 @@
-<aura:component >
-	This is userMenu component!
+<aura:component controller="UserMenuController" >
+	<aura:attribute name="guest" type="Guest__c" />
+	<aura:attribute name="loggedIn" type="Boolean" default="false" />
+	<aura:attribute name="reservations" type="Object[]" />
+
+	<aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}" />
+
+	<aura:if isTrue="{! !(v.loggedIn)}">
+		<c:guestBooking />
+		<aura:set attribute="else" >
+			
+			<div class="slds-scope">
+				<div class="slds-m-around_medium">
+					<div class="slds-grid slds-text-heading_large">
+						<p style="color: crimson; padding-left:1em; padding-bottom:1em">Hi {!v.guest.First_Name__c}! </p>
+					</div>
+					<div class="slds-grid">
+						<div class="slds-col slds-box slds-size--1-of-3 slds-theme_shade">
+							<p class="slds-text-heading_large">
+								Your Data
+							</p>
+							<hr />
+							<p class="slds-text-body_regular"> <lightning:formattedText value="{!'First Name: ' + v.guest.First_Name__c}" /> </p>
+							<p class="slds-text-body-regular"> <lightning:formattedText value="{!'Last Name: ' + v.guest.Last_Name__c}" /> </p>
+							<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Phone: ' + v.guest.Phone__c}" /> </p>
+							<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Email: ' + v.guest.Email__c}" /> </p>
+							<hr />
+							<div class="slds-grid">
+									<div class="slds-col slds-align-left slds-align-bottom"><lightning:button label="Change User Data" title="Change user data" onclick="{! c.changeUserData}" disabled="true" /></div>
+									<div class="slds-col slds-align-right slds-align-bottom"><lightning:button label="Logout" title="Logout" onclick="{!c.logout}" disabled="true" /></div>
+							</div>
+						</div>
+						<div class="slds-col slds-box slds-size--2-of-3 slds-theme_shade">
+							<p class="slds-text-heading_large">
+								Your Reservations
+							</p>
+							<hr />
+							<aura:iteration items="{!v.reservations}" var="reservation">
+								<div class="slds-grid">
+																			<!-- IMAGE AND INFO -->
+									<div class="slds-media slds-col slds-box">
+										<div class="slds-media__figure slds-col slds-size_1-of-3">
+											<lightning:formattedRichText value="{!reservation.Room__r.Photo__c}" />
+										</div>
+
+										<div class="slds-media__body slds-col slds-size_2-of-3">
+											<p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no. ' + reservation.Room__r.Name}" /> </p>
+											<p class="slds-text-body_regular"> <lightning:formattedText value="{! reservation.Check_In__c + ' - ' + reservation.Check_Out__c}" /> </p>
+											<p class="slds-text-body_small"> <lightning:formattedText value="{! 'Single beds: ' + reservation.Room__r.Single_Beds__c + ' | Double beds: ' + reservation.Room__r.Double_Beds__c}" /> </p>
+										</div>
+									</div>
+																					<!-- /IMAGE AND INFO -->
+								</div>
+							</aura:iteration>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</aura:set>
+	</aura:if>
+
+
+	
+
+	<!-- Hello {!guest.First_Name__c}! -->
+
+
+	<!-- This is userMenu component!
 	1.Logujemy się do konta za pomocą maila
 	2. Wyświetla nam się lista naszych rezerwacji
 	3. Możemy kliknąć obiekt listy i wyświetlą nam się szczegóły rezerwacji oraz koszt do 
@@ -7,5 +74,5 @@
 	4. W szczegółach mamy informacje o rezerwacji i listę usług danego hotelu
 	5. Przy liście usług może kliknąć dodaj
 	6. Usługa dodaje się do naszego koszyka
-	7. Podczas check-out (ostatni dzień pobytu) płacimy za usługę
+	7. Podczas check-out (ostatni dzień pobytu) płacimy za usługę -->
 </aura:component>

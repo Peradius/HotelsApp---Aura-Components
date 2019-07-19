@@ -14,7 +14,6 @@
 
     <aura:registerEvent name="sendGuestData" type="c:sendGuestData" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
-    
 
     <div class="slds-scope">
         <div class="slds-grid slds-p-around_medium slds-box">
