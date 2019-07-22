@@ -1,12 +1,13 @@
 ({
-	getRooms : function(component, Id, maximumPrice, peopleInRoom, checkInDate, checkOutDate) {
+	getRooms : function(component, Id, maximumPrice, peopleInRoom, checkInDate, checkOutDate, isExecutive) {
 		var action = component.get("c.getRooms")
 		action.setParams({
 			"hotelId" : Id,
 			"maxPrice" : maximumPrice,
 			"peopleInRoom" : peopleInRoom,
 			"checkIn" : checkInDate,
-			"checkOut" : checkOutDate
+			"checkOut" : checkOutDate,
+			"isExecutive" : isExecutive
 		});
 
 		action.setCallback(this, function(response){

@@ -3,11 +3,8 @@
         <aura:attribute name="checkInDate" type="date" />
         <aura:attribute name="checkOutDate" type="date" />
         <aura:attribute name="peopleInRoom" type="decimal" default="1" />
-
-        <aura:handler event="c:sendHotelData" action="{!c.handleHotelData}" />
         
         <aura:registerEvent name="sendBasicFilters" type="c:basicFilters"/>
-        
 
     <div class="slds-scope">
                                                 <!-- HEADER -->

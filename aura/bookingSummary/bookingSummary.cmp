@@ -2,9 +2,6 @@
     <aura:attribute name="hotel" type="Hotel__c" />
     <aura:attribute name="room" type ="Room__c" />
 
-    <aura:handler event="c:sendHotelData" action="{!c.receiveHotelData}"/>
-    <aura:handler event="c:sendRoomData" action="{!c.receiveRoomData}"/>
-
     <div class="slds-scope">
                                                 <!-- HEADER -->
         <div class="slds-page-header slds-grid">

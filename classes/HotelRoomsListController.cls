@@ -1,12 +1,12 @@
 public with sharing class HotelRoomsListController {
     @AuraEnabled
-    public static List<Room__c> getRooms(String hotelId, Decimal maxPrice, Decimal peopleInRoom, Date checkIn, Date checkOut) {
+    public static List<Room__c> getRooms(String hotelId, Decimal maxPrice, Decimal peopleInRoom, Date checkIn, Date checkOut, Boolean isExecutive) {
         System.debug('I got into the class!');
 
         List<Room__c> allRooms = new List<Room__c>();
         allRooms = [SELECT Name, Single_Beds__c, Double_Beds__c, Price_for_Night__c, Maximum_People_in_the_Room__c, Executive_Room__c, Photo__c
                 FROM Room__c 
-                WHERE (Hotel__c = :hotelId AND Price_for_Night__c <= :maxPrice AND Maximum_People_in_the_Room__c >= :peopleInRoom)];
+                WHERE (Hotel__c = :hotelId AND Price_for_Night__c <= :maxPrice AND Maximum_People_in_the_Room__c >= :peopleInRoom AND Executive_Room__c	=: isExecutive)];
 
         System.debug('allRooms size: ' + allRooms.size());
 

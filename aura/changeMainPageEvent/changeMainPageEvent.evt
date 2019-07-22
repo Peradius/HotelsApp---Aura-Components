@@ -1,4 +1,4 @@
 <aura:event type="APPLICATION">
     <aura:attribute name="mainMenu" type="Boolean" default="true"/>
-    <aura:attribute name="userMenu" type="Boolean" />
+    <aura:attribute name="userMenu" type="Boolean" default="false"/>
 </aura:event>

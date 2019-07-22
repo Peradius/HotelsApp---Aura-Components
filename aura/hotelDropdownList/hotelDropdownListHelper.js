@@ -5,7 +5,6 @@
             "rating" : rating,
             "city" : city
         })
-        console.log("Hi!");
         // Add callback behavior for when response is received
         action.setCallback(this, function(response) {
             var state = response.getState();

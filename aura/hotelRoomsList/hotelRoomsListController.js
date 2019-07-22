@@ -10,11 +10,6 @@
 		var startDate = new Date(checkInDate); 
     	var endDate = new Date(checkOutDate);
 		var totalDays = (endDate - startDate) / 8.64e7;
-		console.log("Days: " + totalDays);
-
-		console.log("receiveBasicFilterData hotelId: " + hotelId);
-		console.log("receiveBasicFilterData checkInDate: " + checkInDate);
-		console.log("receiveBasicFilterData checkInDate: " + checkOutDate);
 
 		component.set("v.hotelId", hotelId);
 		component.set("v.checkInDate", checkInDate);
@@ -42,7 +37,7 @@
 
 		console.log("ReceiveAdditionalFilterData maximumPrice: " + maximumPrice);
 
-		helper.getRooms(component, hotelId, maximumPrice, peopleInRoom, checkInDate, checkOutDate);
+		helper.getRooms(component, hotelId, maximumPrice, peopleInRoom, checkInDate, checkOutDate, isExecutive);
 	},
 
 	bookThisRoom : function(component, event, helper) {

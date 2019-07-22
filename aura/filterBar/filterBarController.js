@@ -8,6 +8,12 @@
 		console.log("is Executive: " + isExecutive);
 		console.log("---");
 
+		if(!isExecutive) {
+			isExecutive = null;
+		}
+
+		console.log("is " + isExecutive);
+
 		var filtersEvent = $A.get("e.c:searchFilters");
 		filtersEvent.setParams({
 			"maximumPrice" : maxPrice,
@@ -15,5 +21,13 @@
 		});
 		filtersEvent.fire();
 		console.log("Filters Event sent!");
+	},
+
+	checkboxChange : function(component, event, helper) {
+		var value = event.getSource().get('v.checked');
+		if(!value) {
+			value = null;
+		}
+		component.set("v.isExecutive", value);
 	}
 })

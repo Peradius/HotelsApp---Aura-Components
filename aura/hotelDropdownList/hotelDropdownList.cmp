@@ -9,7 +9,6 @@
     <aura:handler event="c:hotelFilters" action="{!c.handleHotelFilters}" />
                                                             <!-- START OF A PAGE -->
     <aura:iteration items="{!v.hotels}" var="hotel">
-
         <div class="slds-grid">
                                                             <!-- IMAGE AND INFO -->
             <div class="slds-media slds-col slds-box slds-size_5-of-6">
@@ -54,5 +53,4 @@
                                                                 <!-- /RATING AND BUTTON -->
         </div>
     </aura:iteration>       
-
 </aura:component>
