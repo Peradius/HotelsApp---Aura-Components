@@ -12,20 +12,14 @@
         component.set("v.body", "");
     },
 
-    createReservation : function(component, guest, room, checkIn, checkOut) {
+    createReservation : function(component, guest, room, checkIn, checkOut, totalPrice) {
         var action = component.get("c.createReservation");
-        console.log("Reservation parameters");
-        console.log("**********");
-        console.log(guest.Name);
-        console.log(room.Name);
-        console.log(checkIn);
-        console.log(checkOut);
-        console.log("**********");
         action.setParams({
             "guest" : guest,
             "room" : room,
             "checkIn" : checkIn,
-            "checkOut" : checkOut
+            "checkOut" : checkOut,
+            "totalPrice" : totalPrice
         });
 
         action.setCallback(this, function(response){
@@ -38,7 +32,5 @@
 			}
 		});
         $A.enqueueAction(action);
-        
-        console.log("Done!");
     }
 })

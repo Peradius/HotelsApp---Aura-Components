@@ -31,8 +31,11 @@
 
 	handleReservationDataEvent :  function(component, event, helper){
         var checkIn = event.getParam("checkIn");
-        var checkOut = event.getParam("checkOut");
+		var checkOut = event.getParam("checkOut");
+		var totalPrice = event.getParam("totalPrice");
+		console.log("total Price: " + totalPrice);
         component.set("v.checkIn", checkIn);
-        component.set("v.checkOut", checkOut);
+		component.set("v.checkOut", checkOut);
+		component.set("v.totalPrice", totalPrice);
     }
 })

@@ -1,15 +1,9 @@
-public class GuestBookingController {
+public with sharing class GuestBookingController {
      @AuraEnabled
      public static Guest__c createGuest(Guest__c guest) {
-         Guest__c newGuest = new Guest__c();
-         newGuest.First_Name__c = guest.First_Name__c;
-         newGuest.Last_Name__c = guest.Last_Name__c;
-         newGuest.Phone__c = guest.Phone__c;
-         newGuest.Charge__c = guest.Charge__c;
-         newGuest.Email__c = guest.Email__c;
-         insert newGuest;
-         System.debug('Inside createGuest method: guest Id -' + newGuest.Id);
-         return newGuest;
+         insert guest;
+         System.debug('Inside createGuest method: guest Id -' + guest.Id);
+         return guest;
      }
 
      @AuraEnabled

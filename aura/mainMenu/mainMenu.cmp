@@ -9,6 +9,7 @@
     <aura:attribute name="guest" type="Guest__c" />
     <aura:attribute name="checkIn" type="Date" />
     <aura:attribute name="checkOut" type="Date" />
+    <aura:attribute name="totalPrice" type="Decimal" />
 
     <aura:handler event="c:sendHotelData" action="{!c.handleHotelDataEvent}"/>
     <aura:handler event="c:sendRoomData" action="{!c.handleRoomDataEvent}"/>
@@ -36,6 +37,6 @@
 
     <aura:if isTrue="{!v.pageFourOpened}" >
         <c:summaryPopup hotel="{!v.hotel}" room="{!v.room}" guest="{!v.guest}" 
-            checkIn="{!v.checkIn}" checkOut="{!v.checkOut}"/>
+            checkIn="{!v.checkIn}" checkOut="{!v.checkOut}" totalPrice="{!v.totalPrice}"/>
     </aura:if>
 </aura:component>

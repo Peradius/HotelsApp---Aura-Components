@@ -47,7 +47,7 @@
                 </p>
                 
                 <p class="slds-m-around_large slds-align_absolute-center">
-                    <lightning:button variant="brand" label="Book" onclick="{! c.bookThisRoom }" value="{!room}" /> 
+                    <lightning:button variant="brand" label="Book" onclick="{! c.bookThisRoom}" value="{!room}" /> 
                 </p>
             </div>
         </div>

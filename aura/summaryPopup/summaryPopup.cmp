@@ -4,8 +4,8 @@
     <aura:attribute name="room" type="Room__c" />
     <aura:attribute name="checkIn" type="Date" />
     <aura:attribute name="checkOut" type="Date" />
+    <aura:attribute name="totalPrice" type="Decimal" />
 
-    <aura:handler event="c:sendReservationData" action="handleReservationDataEvent" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
 
     <div class="slds-scope">

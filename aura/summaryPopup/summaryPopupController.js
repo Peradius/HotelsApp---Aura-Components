@@ -4,8 +4,9 @@
         var room = component.get("v.room");
         var checkIn = component.get("v.checkIn");
         var checkOut = component.get("v.checkOut");
+        var totalPrice = component.get("v.totalPrice");
 
-        helper.createReservation(component, guest, room, checkIn, checkOut);
+        helper.createReservation(component, guest, room, checkIn, checkOut, totalPrice);
 
         alert("Reservation successful!");
         var traverseEvent = $A.get("e.c:pageTraverseEvent");

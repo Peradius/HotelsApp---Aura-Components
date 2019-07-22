@@ -52,12 +52,15 @@
 		console.log("Send Room Data Event sent!");
 
 		var checkIn = component.get("v.checkInDate");
-		var checkOut = component.get("v.checkOutDate");;
+		var checkOut = component.get("v.checkOutDate");
+		var totalDays = component.get("v.totalDays");
+		var totalPrice = totalDays * room.Price_for_Night__c;
 
 		var sendReservationDataEvent = $A.get("e.c:sendReservationData");
 		sendReservationDataEvent.setParams({
 			"checkIn" : checkIn, 
-			"checkOut" : checkOut
+			"checkOut" : checkOut,
+			"totalPrice" : totalPrice
 		});
 		sendReservationDataEvent.fire();
 		console.log("Send Reservation Data Event sent!");
