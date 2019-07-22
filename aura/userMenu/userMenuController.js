@@ -7,6 +7,12 @@
 		component.set("v.loggedIn", "true");
 		helper.queryReservations(component, guest);
 	},
+
+	handleChangeUserDataModal : function(component, event, helper) {
+		console.log("I have received the guest data in user menu");
+		var value = event.getParam("showModal");
+		component.set("v.showUserChangeData", value);
+	},
 	
 	clickReservation : function(component, event, helper) {
 		var reservationId = event.getSource().get("v.value").Id;
@@ -20,5 +26,9 @@
 		console.log("Service clicked: " + service.Id);
 		var guest = component.get("v.guest");
 		helper.orderService(component, guest, service);
+	},
+
+	changeUserData :  function(component, event, helper) {
+		component.set("v.showUserChangeData", true);
 	}
 })

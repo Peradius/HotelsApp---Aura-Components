@@ -11,7 +11,7 @@
     <div class="slds-scope">
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
             <div class="slds-modal__container">
-                                                        <!-- MODAL HEADER -->
+                                                <!-- MODAL HEADER -->
                 <div class="slds-scrollable_y" >
                     <div class="slds-modal__content slds-p-around_small slds-grid">
                         <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                                                            <!--/ MODAL HEADER -->
+                                                <!--/ MODAL HEADER -->
 
                                                 <!-- HOTEL INFO -->
                     <div class="slds-modal__content slds-p-around_medium slds-grid">
@@ -77,6 +77,5 @@
                 </footer>
             </div>
         </section>
-        <div class="slds-backdrop slds-backdrop_open"></div>
     </div>
 </aura:component>

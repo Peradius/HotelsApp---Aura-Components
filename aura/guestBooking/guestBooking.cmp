@@ -37,7 +37,7 @@
                             </form>
                             <aura:renderIf isTrue="{!v.emailNotFound}">
                                 <div style="color: red; font: 15px">
-                                        Email {!v.email} wasn't found! Try again or create a new account!
+                                        Email wasn't found! Try again or create a new account!
                                 </div>
                             </aura:renderIf>
                         </aura:renderIf>

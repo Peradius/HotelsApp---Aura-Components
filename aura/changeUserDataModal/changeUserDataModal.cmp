@@ -1,0 +1,34 @@
+<aura:component controller="ChangeUserDataModalController">
+    <aura:attribute name="guest" type="Guest__c" />
+    
+    <aura:registerEvent name="updateGuestData" type="c:sendGuestData" />
+	<aura:registerEvent name="showChangeUserDataModal" type="c:showChangeUserDataModal"/>
+
+    <div class="slds-scope">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-p-around_medium slds-grid">
+                                                        <!-- FORM -->
+                    <form class="slds-form--stacked"> 
+                        <lightning:input aura:id="guestform" label="First Name" 
+                                        value="{!v.guest.First_Name__c}" required="true"/>
+            
+                        <lightning:input aura:id="guestform" label="Last Name" 
+                                        value="{!v.guest.Last_Name__c}" required="true"/>
+            
+                        <lightning:input aura:id="guestform" type="tel" label="Telephone" 
+                                        value="{!v.guest.Phone__c}" />
+            
+                        <lightning:input aura:id="guestform" type="email" label="E-Mail" 
+                                        value="{!v.guest.Email__c}" disabled="true"/>
+                    </form>
+                                                        <!-- FORM -->
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.cancel}">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick="{!c.confirm}">Confirm</button>
+                </footer>
+            </div>
+        </section>
+    </div>
+</aura:component>
