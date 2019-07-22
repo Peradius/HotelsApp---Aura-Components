@@ -1,29 +1,19 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
+        <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
         <aura:attribute name="hotel" type="Hotel__c" />
         <aura:attribute name="checkInDate" type="date" />
         <aura:attribute name="checkOutDate" type="date" />
         <aura:attribute name="peopleInRoom" type="decimal" default="1" />
         <aura:attribute name="errorMessage" type="String" default='' />
-        
+
+        <aura:registerEvent name="sendSecondPageHeader" type="c:hotelHeaderEvent" />
         <aura:registerEvent name="sendBasicFilters" type="c:basicFilters"/>
 
     <div class="slds-scope">
-                                                <!-- HEADER -->
-        <div class="slds-page-header slds-grid">
-            <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
-                <div class="slds-media__figure">
-                        <lightning:icon iconName="standard:home" alternativeText="Search Room" size="large" />
-                </div>
-                <div class="slds-media__body">
-                    <p class="slds-text-title_caps slds-line-height_reset">HotelApp</p>
-                    <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">Select a Room</h1>
-                </div>
-            </div>
-        </div>
-                                                <!-- /HEADER -->
                                                 <!-- CENTER (FILTERS) -->
-        <div class="slds-page-body">
-            <div class="slds-grid slds-p-around_medium">
+        <div class="slds-grid slds-p-around_medium">
+            <div class="slds-col slds-grid slds-box slds-theme_shade"> 
                 <div class="slds-col">
                     <lightning:input type="date" value="{!v.checkInDate}" placeholder="Check-In Date" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
@@ -31,12 +21,12 @@
                     <lightning:input type="date" value="{!v.checkOutDate}" placeholder="Check-Out Date" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
                 <div class="slds-col">
-                    <lightning:input type="number" value="{!v.peopleInRoom}" label="People in the room" required="true" onchange="{!c.updateFiltersTop}"/>
+                    <lightning:input type="number" value="{!v.peopleInRoom}" label="People in the room" min="1" step="1" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
             </div>
-            <div class="slds-text-color_error slds-p-left_x-small">
+        </div>
+        <div class="slds-text-color_error slds-p-left_x-small">
                 {!v.errorMessage}
-            </div>
         </div>
                                                 <!-- /CENTER (FILTERS) -->
 

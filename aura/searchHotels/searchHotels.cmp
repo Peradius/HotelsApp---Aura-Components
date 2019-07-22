@@ -1,31 +1,19 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
-<div class="slds-scope">
-                                    <!-- THIS IS THE MAIN PAGE -->
-                                            <!-- HEADER -->
-    <div class="slds-page-header slds-grid">
-        <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
-            <div class="slds-media__figure">
-                <lightning:icon iconName="standard:home" alternativeText="Search Hotel" size="large" />
-            </div>
-            <div class="slds-media__body">
-                <p class="slds-text-title_caps slds-line-height_reset">HotelApp</p>
-                <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">Select a Hotel</h1>
-            </div>
-        </div>
-    </div>
-                                            <!-- /HEADER -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:registerEvent name="sendFirstPageHeader" type="c:hotelHeaderEvent" />
 
-    <div class="slds-grid slds-p-around_medium">
-                                            <!-- LEFT (FILTERS) -->
-        <div class="slds-col slds-size_1-of-6 slds-box slds-theme_shade">
-            <c:hotelFilterBar />
+    <div class="slds-scope">
+        <div class="slds-grid slds-p-around_medium">
+                                                <!-- LEFT (FILTERS) -->
+            <div class="slds-col slds-size_1-of-6 slds-box slds-theme_shade">
+                <c:hotelFilterBar />
+            </div>
+                                                <!-- /LEFT (FILTERS) -->
+                                                <!-- CENTER (HOTELS) -->
+            <div class="slds-col slds-size_5-of-6 slds-box slds-theme_shade">
+                <c:hotelDropdownList />
+            </div>
+                                                <!-- /CENTER (HOTELS) -->
         </div>
-                                            <!-- /LEFT (FILTERS) -->
-                                            <!-- CENTER (HOTELS) -->
-        <div class="slds-col slds-size_5-of-6 slds-box slds-theme_shade">
-            <c:hotelDropdownList />
-        </div>
-                                            <!-- /CENTER (HOTELS) -->
     </div>
-</div>
 </aura:component>

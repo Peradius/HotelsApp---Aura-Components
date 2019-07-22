@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="header" type="String" />
+    <aura:attribute name="description" type="String" />
+</aura:event>

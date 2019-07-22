@@ -1,4 +1,14 @@
 ({
+	doInit: function(component, event, helper) {
+        var headerEvent = $A.get("e.c:hotelHeaderEvent");
+        headerEvent.setParams({
+            "header" : "HotelApp",
+            "description" : "Select a Room"
+        });
+        headerEvent.fire();
+	},
+	
+
 	updateFiltersTop : function(component, event, helper) {
 		var hotelId = component.get("v.hotel").Id;
 		var checkInDate = component.get("v.checkInDate");

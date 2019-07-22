@@ -11,4 +11,5 @@
     <aura:if isTrue="{!v.userMenuOpened}" >
         <c:userMenu />
     </aura:if>
+
 </aura:component>

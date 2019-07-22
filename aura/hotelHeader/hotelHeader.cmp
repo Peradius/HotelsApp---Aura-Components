@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="header" type="String" />
+    <aura:attribute name="description" type="String" />
+
+    <aura:handler event="c:hotelHeaderEvent" action="{!c.handleHotelHeader}" />
+
+    <div class="slds-page-header slds-grid">
+        <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="standard:home" alternativeText="Search Hotel" size="large" />
+            </div>
+            <div class="slds-media__body">
+                <p class="slds-text-title_caps slds-line-height_reset">{!v.header}</p>
+                <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">{!v.description}</h1>
+            </div>
+        </div>
+    </div>
+</aura:component>

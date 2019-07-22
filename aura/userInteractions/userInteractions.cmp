@@ -1,15 +1,19 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
     <aura:registerEvent name="changeMainPageEvent" type="c:changeMainPageEvent" />
 
-    <div class="slds-grid">
-        <div class="slds-theme_shade">
-            <p class="slds-align_absolute-center slds-m-top--large">
-                <lightning:button label="Book a Room" title="Book a Room" onclick="{!c.bookRoomClicked}" variant="brand" />
-            </p>
-            
-            <p class="slds-align_absolute-center slds-m-top--large">
-                <lightning:button label="View your Account" title="View your Account" onclick="{!c.viewAccountClicked}" variant="brand" />
-            </p>
+    <div class="slds-scope">
+        <div class="slds-grid slds-p-around_medium">
+            <div class="slds-grid slds-col slds-box slds-theme_shade">
+                <div class="slds-m-around--small slds-col">
+                    <lightning:button label="Book a Room" title="Book a Room" onclick="{!c.bookRoomClicked}" variant="brand" />
+                </div>
+                <div class="slds-m-around--small slds-col">
+                    <lightning:button label="View your Account" title="View your Account" onclick="{!c.viewAccountClicked}" variant="brand" />    
+                </div>
+                <div class="slds-m-around--small slds-col">
+                    <lightning:button label="Contact us" title="Contact us" disabled="true" variant="brand" />    
+                </div>
+            </div>
         </div>
     </div>
 </aura:component>
