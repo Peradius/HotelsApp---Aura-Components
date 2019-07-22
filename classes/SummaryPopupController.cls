@@ -6,7 +6,7 @@ public with sharing class SummaryPopupController {
         Check_Out__c = checkOut,
         Confirmed__c = true,
         Guest__c = guest.Id,
-        Room__c =  room.Id
+        Room__c = room.Id
         );
 
         insert reservation;

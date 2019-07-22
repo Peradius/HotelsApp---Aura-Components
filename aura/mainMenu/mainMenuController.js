@@ -13,16 +13,19 @@
 	
 	handleHotelDataEvent : function(component, event, helper) {
 		var hotel = event.getParam("hotel");
+		console.log("Received data in mainMenuController: hotelData");
 		component.set("v.hotel", hotel);
 	},
 
 	handleRoomDataEvent : function(component, event, helper) {
 		var room = event.getParam("room");
+		console.log("Received data in mainMenuController: roomData");
 		component.set("v.room", room);
 	},
 
 	handleGuestDataEvent : function(component, event, helper) {
 		var guest = event.getParam("guest");
+		console.log("Received data in mainMenuController: guestData");
 		component.set("v.guest", guest);
 	},
 

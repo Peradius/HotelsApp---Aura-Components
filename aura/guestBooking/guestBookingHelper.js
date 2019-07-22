@@ -8,10 +8,10 @@
 		action.setCallback(this, function(response){
 			var state = response.getState();
 			if (state === "SUCCESS") {
-				console.log("Component(Guest) set!");
-				console.log("Guest name " + guest.First_Name__c);
-				component.set("v.guest", guest);
-				this.sendGuestData(guest);
+				var newGuest = response.getReturnValue();
+				console.log("Inserted Guest Id " + newGuest.Id);
+				component.set("v.guest", newGuest);
+				this.sendGuestData(newGuest);
 				this.sendPageTraverseEvent(component);
 			} else {
 				console.log("Error setting guests");
@@ -35,7 +35,6 @@
 				var guest = response.getReturnValue();
 				component.set("v.guest", guest);
 				component.set("v.emailNotFound", false);
-				console.log("It's : " + component.get("v.guest").First_Name__c);
 				this.sendGuestData(guest);
 				this.sendPageTraverseEvent(component);
 			} else {
@@ -50,7 +49,7 @@
 
 	sendGuestData : function(guest) {
 		var sendGuestDataEvent = $A.get("e.c:sendGuestData");
-		console.log(guest);
+		console.log(guest.Id);
 		sendGuestDataEvent.setParams({
 			"guest" : guest
 		});

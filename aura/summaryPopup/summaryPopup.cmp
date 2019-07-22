@@ -5,9 +5,6 @@
     <aura:attribute name="checkIn" type="Date" />
     <aura:attribute name="checkOut" type="Date" />
 
-    <aura:handler event="c:sendHotelData" action="handleHotelDataEvent" />
-    <aura:handler event="c:sendRoomData" action="handleRoomDataEvent" />
-    <aura:handler event="c:sendGuestData" action="handleGuestDataEvent" />
     <aura:handler event="c:sendReservationData" action="handleReservationDataEvent" />
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
 

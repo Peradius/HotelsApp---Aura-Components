@@ -14,6 +14,13 @@
 
     createReservation : function(component, guest, room, checkIn, checkOut) {
         var action = component.get("c.createReservation");
+        console.log("Reservation parameters");
+        console.log("**********");
+        console.log(guest.Name);
+        console.log(room.Name);
+        console.log(checkIn);
+        console.log(checkOut);
+        console.log("**********");
         action.setParams({
             "guest" : guest,
             "room" : room,
@@ -30,6 +37,8 @@
 				console.log(response);
 			}
 		});
-		$A.enqueueAction(action);
+        $A.enqueueAction(action);
+        
+        console.log("Done!");
     }
 })

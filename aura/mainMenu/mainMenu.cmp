@@ -35,6 +35,8 @@
     </aura:if>
 
     <aura:if isTrue="{!v.pageFourOpened}" >
+        Guest: {!v.guest.Id}
+        Name {!v.guest.First_Name__c} {!v.guest.Last_Name__c}
         <c:summaryPopup hotel="{!v.hotel}" room="{!v.room}" guest="{!v.guest}" 
             checkIn="{!v.checkIn}" checkOut="{!v.checkOut}"/>
     </aura:if>
