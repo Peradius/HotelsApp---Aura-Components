@@ -3,6 +3,7 @@
         <aura:attribute name="checkInDate" type="date" />
         <aura:attribute name="checkOutDate" type="date" />
         <aura:attribute name="peopleInRoom" type="decimal" default="1" />
+        <aura:attribute name="errorMessage" type="String" default='' />
         
         <aura:registerEvent name="sendBasicFilters" type="c:basicFilters"/>
 
@@ -32,6 +33,9 @@
                 <div class="slds-col">
                     <lightning:input type="number" value="{!v.peopleInRoom}" label="People in the room" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
+            </div>
+            <div class="slds-text-color_error slds-p-left_x-small">
+                {!v.errorMessage}
             </div>
         </div>
                                                 <!-- /CENTER (FILTERS) -->
