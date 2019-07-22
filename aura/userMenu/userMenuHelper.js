@@ -45,7 +45,7 @@
 		var action = component.get("c.updateCharge");
 		console.log("oderService entered");
 		action.setParams({
-			"guestId" : guest.Id,
+			"guest" : guest,
 			"cost" : service.Price__c
 		});
 
@@ -53,6 +53,8 @@
 			var state = response.getState();
 			if (state === "SUCCESS") {
 				console.log("Charge updated!");
+				var updatedGuest = response.getReturnValue();
+				component.set("v.guest", updatedGuest);
 			} else {
 				console.log("Error updating charge");
 				console.log(response);

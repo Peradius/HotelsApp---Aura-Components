@@ -11,19 +11,11 @@ public with sharing class UserMenuController {
     }
 
     @AuraEnabled
-    public static Guest__c updateCharge(String guestId, Decimal cost){
-        System.debug('Guest not yet updated!');
-        Guest__c oldGuest = [SELECT Charge__c from Guest__c WHERE Id =: guestId LIMIT 1];
-        if(oldGuest.Charge__c == null) {
-            oldGuest.Charge__c = 0;
-        }
-        System.debug(oldGuest);
-        System.debug(oldGuest.Charge__c);
-        oldGuest.Charge__c = oldGuest.Charge__c + cost;
-        System.debug('Guest updated!');
-        System.debug(oldGuest.Charge__c);
-        update oldGuest;
-        return oldGuest;
+    public static Guest__c updateCharge(Guest__c guest, Decimal cost){
+        guest.Charge__c = guest.Charge__c + cost;
+        
+        update guest;
+        return guest;
     }
 
     private static String getHotelId(String reservationId){
