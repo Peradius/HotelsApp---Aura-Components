@@ -5,8 +5,9 @@
 	<aura:attribute name="reservations" type="Reservation__c[]" />
 	<aura:attribute name="services" type="Service__c" />
 	<aura:attribute name="showReservationDetails" type="Boolean" default="false" />
-	<aura:attribute name="showUserChangeData" type="Boolean" default="false" />
-	<aura:attribute name="showBillingData" type="Boolean" default="false" />
+	<aura:attribute name="showBillingPage" type="Boolean" default="false" />
+
+	<aura:handler name="billingTraverseEvent" event="c:billingTraverseEvent" action="{!c.handleShowBilling}" />
 
 	<aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}" />
 	<aura:handler name="showChangeUserDataModal" event="c:showChangeUserDataModal" action="{!c.handleChangeUserDataModal}" />
@@ -22,7 +23,7 @@
 				</div>
 
 								<!-- USER ACCOUNT DETAILS -->
-			<aura:if isTrue="{! !(v.showBillingData)}">
+			<aura:if isTrue="{! !(v.showBillingPage)}">
 				<div class="slds-m-around_medium">
 					<div class="slds-grid">
 						<div class="slds-col slds-box slds-size--1-of-3 slds-theme_shade">
@@ -100,7 +101,7 @@
 			</aura:if>
 				<!-- USER ACCOUNT DETAILS -->
 				<!-- USER BILLING -->
-			<aura:if isTrue="{!v.showBillingData}" >
+			<aura:if isTrue="{!v.showBillingPage}" >
 				<c:showBillingData reservations="{!v.reservations}" />
 			</aura:if>
 				<!-- /USER BILLING -->

@@ -5,9 +5,12 @@
 	<aura:attribute name="reservationTotalBilling" type="Decimal" />
 	<aura:attribute name="showTotalCost" type="Boolean" default="false" />
 
+	<aura:registerEvent name="billingTraverseEvent" type="c:billingTraverseEvent" />
+
 	<div class="slds-m-around_medium">
 		<div class="slds-grid">
 			<div class="slds-col slds-box slds-grid slds-theme_shade">
+										<!-- RESERVATIONS -->
 				<div class="slds-col slds-box slds-size--1-of-3 slds-theme_shade">
 					<p class="slds-text-heading_large">
 						Reservations
@@ -34,7 +37,16 @@
 																			<!-- /IMAGE AND INFO -->
 						</div>
 					</aura:iteration>
+					<div class="slds-grid">
+						<div class="slds-col">
+							<p class="slds-align_absolute-center slds-p-around_medium" >
+								<lightning:button label="Back" onclick="{!c.backClicked}" variant="brand" />
+							</p>
+						</div>
+					</div>
 				</div>
+												<!-- /RESERVATIONS -->
+												<!-- BILLINGS -->
 				<div class="slds-col slds-box slds-size--2-of-3 slds-theme_shade">
 					<p class="slds-text-heading_large">
 						Billings
@@ -72,7 +84,7 @@
 						<div class="slds-grid">
 							<div class="slds-media slds-col">
 								<div class="slds-media__body slds-col slds-text-heading_large">
-									<p style="color:crimson">
+									<p class="slds-align_absolute-center slds-p-around_medium" style="color:crimson">
 										Total: 
 										<lightning:formattedNumber value="{!v.reservationTotalBilling}" 
 											currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency" /> 
@@ -83,6 +95,7 @@
 					</aura:if>
 												<!-- /TOTAL COST -->
 				</div>
+												<!-- /BILLINGS -->
 			</div>
 		</div>
 	</div>

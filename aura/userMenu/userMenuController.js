@@ -13,7 +13,12 @@
 	},
 
 	showBilling : function(component, event, helper) {
-		component.set("v.showBillingData", true);
+		component.set("v.showBillingPage", true);
+	},
+
+	handleShowBilling : function(component, event, helper) {
+		var value = event.getParam("showBillingPage");
+		component.set("v.showBillingPage", value);
 	},
 	
 	clickReservation : function(component, event, helper) {
