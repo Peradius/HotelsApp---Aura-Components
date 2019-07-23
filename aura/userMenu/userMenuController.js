@@ -1,6 +1,5 @@
 ({
     handleGuestDataEvent :  function(component, event, helper){
-		console.log("I have received the guest data in user menu");
 		var guest = event.getParam("guest");
 		console.log(guest.First_Name__c);
 		component.set("v.guest", guest);
@@ -9,9 +8,12 @@
 	},
 
 	handleChangeUserDataModal : function(component, event, helper) {
-		console.log("I have received the guest data in user menu");
 		var value = event.getParam("showModal");
 		component.set("v.showUserChangeData", value);
+	},
+
+	showBilling : function(component, event, helper) {
+		component.set("v.showBillingData", true);
 	},
 	
 	clickReservation : function(component, event, helper) {

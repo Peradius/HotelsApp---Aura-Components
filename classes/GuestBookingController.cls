@@ -2,6 +2,7 @@ public with sharing class GuestBookingController {
      @AuraEnabled
      public static Guest__c createGuest(Guest__c guest) {
          insert guest;
+         System.debug('Inside createGuest method: guest Id -' + guest.Id);
          return guest;
      }
 

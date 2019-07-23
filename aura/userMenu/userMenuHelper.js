@@ -11,8 +11,6 @@
 				var reservations = action.getReturnValue();
 				component.set("v.reservations", reservations);
 				console.log("Reservations retrieved!");
-				console.log("Check in: " + component.get("v.reservations")[0].Check_In__c);
-				console.log("Room Name: " + component.get("v.reservations")[0].Room__r.Name);
 			} else {
 				console.log("Error retrieveing reservations");
 				console.log(response);

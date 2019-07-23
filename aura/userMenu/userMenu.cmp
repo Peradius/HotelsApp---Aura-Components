@@ -6,6 +6,7 @@
 	<aura:attribute name="services" type="Service__c" />
 	<aura:attribute name="showReservationDetails" type="Boolean" default="false" />
 	<aura:attribute name="showUserChangeData" type="Boolean" default="false" />
+	<aura:attribute name="showBillingData" type="Boolean" default="false" />
 
 	<aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}" />
 	<aura:handler name="showChangeUserDataModal" event="c:showChangeUserDataModal" action="{!c.handleChangeUserDataModal}" />
@@ -19,6 +20,9 @@
 						<p style="color: crimson">Hi {!v.guest.First_Name__c}! </p>
 					</div>
 				</div>
+
+								<!-- USER ACCOUNT DETAILS -->
+			<aura:if isTrue="{! !(v.showBillingData)}">
 				<div class="slds-m-around_medium">
 					<div class="slds-grid">
 						<div class="slds-col slds-box slds-size--1-of-3 slds-theme_shade">
@@ -39,6 +43,7 @@
 							<hr />
 							<div class="slds-grid">
 								<div class="slds-col slds-align-left slds-align-bottom"><lightning:button label="Change User Data" title="Change user data" onclick="{! c.changeUserData}"/></div>
+								<div class="slds-col slds-align-left slds-align-bottom"><lightning:button label="Show billing" title="Show billing" onclick="{! c.showBilling}"/></div>
 								<div class="slds-col slds-align-right slds-align-bottom"><lightning:button label="Logout" title="Logout" onclick="{!c.logout}" disabled="true" /></div>
 							</div>
 						</div>
@@ -92,6 +97,13 @@
 					</aura:if>
 																					<!-- /RESERVATION DETAILS -->
 				</div>
+			</aura:if>
+				<!-- USER ACCOUNT DETAILS -->
+				<!-- USER BILLING -->
+			<aura:if isTrue="{!v.showBillingData}" >
+				<c:showBillingData reservations="{!v.reservations}" />
+			</aura:if>
+				<!-- /USER BILLING -->
 			</div>
 		</aura:set>
 	</aura:if>
