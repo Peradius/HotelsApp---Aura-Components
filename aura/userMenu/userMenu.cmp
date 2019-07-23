@@ -1,7 +1,8 @@
 <aura:component controller="UserMenuController" >
 	<aura:attribute name="guest" type="Guest__c" />
 	<aura:attribute name="loggedIn" type="Boolean" default="false" />
-	<aura:attribute name="reservations" type="Reservation__c" />
+	<aura:attribute name="reservation" type="Reservation__c" />
+	<aura:attribute name="reservations" type="Reservation__c[]" />
 	<aura:attribute name="services" type="Service__c" />
 	<aura:attribute name="showReservationDetails" type="Boolean" default="false" />
 	<aura:attribute name="showUserChangeData" type="Boolean" default="false" />
@@ -30,7 +31,7 @@
 								<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Phone: ' + v.guest.Phone__c}" /> </p>
 								<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Email: ' + v.guest.Email__c}" /> </p>
 								<p class="slds-text-body-regular" style="color: crimson">Current charge:
-										<lightning:formattedNumber value="{!v.guest.Charge__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+										<!-- <lightning:formattedNumber value="{!v.guest.Charge__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/> -->
 								</p>
 							<aura:if isTrue="{!v.showUserChangeData}">
 								<c:changeUserDataModal guest="{!v.guest}" />

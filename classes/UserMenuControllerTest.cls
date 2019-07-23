@@ -101,23 +101,6 @@ private class UserMenuControllerTest {
     }
     
     @isTest static void updateChargeTest() {
-        Guest__c newGuest = new Guest__c(
-            First_Name__c = 'Peter',
-            Last_Name__c = 'Alloy',
-            Email__c = 'testcase@test.com',
-            Charge__c = 0
-        );
-        insert newGuest;        
-        
-        List<Guest__c> oldCharge = [SELECT Charge__c FROM Guest__c WHERE Id = :newGuest.Id];
-
-        Test.startTest();
-        
-        UserMenuController.updateCharge(newGuest, 100);
-        
-        Test.stopTest();
-        
-        List<Guest__c> newCharge = [SELECT Charge__c FROM Guest__c WHERE Id = :newGuest.Id];
-
+        // TBA
     }
 }

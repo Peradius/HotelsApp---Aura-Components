@@ -15,17 +15,17 @@
 	},
 	
 	clickReservation : function(component, event, helper) {
-		var reservationId = event.getSource().get("v.value").Id;
+		var reservation = event.getSource().get("v.value");
+		component.set("v.reservation", reservation);
 		component.set("v.showReservationDetails", "true");
-		console.log(component.get("v.guest").Charge__c);
-		helper.queryServices(component, reservationId);
+		helper.queryServices(component, reservation.Id);
 	},
 
 	orderService : function(component, event, helper) {
 		var service = event.getSource().get("v.value");
 		console.log("Service clicked: " + service.Id);
-		var guest = component.get("v.guest");
-		helper.orderService(component, guest, service);
+		var reservation = component.get("v.reservation");
+		helper.orderService(component, reservation, service);
 	},
 
 	changeUserData :  function(component, event, helper) {

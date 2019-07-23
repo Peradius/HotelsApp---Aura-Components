@@ -11,11 +11,14 @@ public with sharing class UserMenuController {
     }
 
     @AuraEnabled
-    public static Guest__c updateCharge(Guest__c guest, Decimal cost){
-        guest.Charge__c = guest.Charge__c + cost;
-        
-        update guest;
-        return guest;
+    public static Billing__c addService(Reservation__c reservation, Service__c service){
+        Billing__c newBilling = new Billing__c(
+            Name = service.Name,
+            Reservation__c = reservation.Id,
+            Service__c = service.Id
+        );
+        insert newBilling;
+        return newBilling;
     }
 
     private static String getHotelId(String reservationId){

@@ -41,20 +41,18 @@
 		$A.enqueueAction(action);
 	},
 
-	orderService : function(component, guest, service) {
-		var action = component.get("c.updateCharge");
+	orderService : function(component, reservation, service) {
+		var action = component.get("c.addService");
 		console.log("oderService entered");
 		action.setParams({
-			"guest" : guest,
-			"cost" : service.Price__c
+			"reservation" : reservation,
+			"service" : service
 		});
 
 		action.setCallback(this, function(response){
 			var state = response.getState();
 			if (state === "SUCCESS") {
-				console.log("Charge updated!");
-				var updatedGuest = response.getReturnValue();
-				component.set("v.guest", updatedGuest);
+				console.log("Billing added!");
 			} else {
 				console.log("Error updating charge");
 				console.log(response);
