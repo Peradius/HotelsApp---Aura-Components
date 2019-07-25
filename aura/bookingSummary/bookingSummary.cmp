@@ -1,12 +1,25 @@
 <aura:component >
-    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
-
     <aura:attribute name="hotel" type="Hotel__c" />
     <aura:attribute name="room" type ="Room__c" />
-    
-    <aura:registerEvent name="sendThirdPageHeader" type="c:hotelHeaderEvent" />
+
+    <aura:handler event="c:sendHotelData" action="{!c.receiveHotelData}"/>
+    <aura:handler event="c:sendRoomData" action="{!c.receiveRoomData}"/>
 
     <div class="slds-scope">
+                                                <!-- HEADER -->
+        <div class="slds-page-header slds-grid">
+            <div class="slds-media slds-col slds-has-flexi-truncate slds-no-space slds-grow slds-box slds-theme_shade">
+                <div class="slds-media__figure">
+                        <lightning:icon iconName="standard:home" alternativeText="Booking Summary" size="large" />
+                </div>
+                <div class="slds-media__body">
+                    <p class="slds-text-title_caps slds-line-height_reset">HotelApp</p>
+                    <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">Book the Room</h1>
+                </div>
+            </div>
+        </div>
+                                                <!-- /HEADER -->
+
         <div class="slds-grid slds-p-around_medium ">
                                                 <!-- LEFT (HOTEL SUMMARY) -->
             <div class="slds-media slds-col slds-size_1-of-2 slds-box slds-theme_shade">
@@ -40,7 +53,12 @@
                                                 <!-- /RIGHT(ROOM SUMMARY) -->
         </div>
                                                 <!-- BOTTOM(USER DATA) -->
-        <c:guestBooking />
+                                                
+        <div class="slds-grid slds-p-around_medium">
+            <div class="slds-col">
+                <c:guestBooking />
+            </div>
+        </div>
                                                 <!-- /BOTTOM(USER DATA) -->
     </div>   
 </aura:component>

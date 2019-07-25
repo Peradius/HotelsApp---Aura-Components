@@ -3,7 +3,7 @@
         var headerEvent = $A.get("e.c:hotelHeaderEvent");
         headerEvent.setParams({
             "header" : "HotelApp",
-            "description" : "Select a Room"
+			"description" : "Select a Room"
         });
         headerEvent.fire();
 	},

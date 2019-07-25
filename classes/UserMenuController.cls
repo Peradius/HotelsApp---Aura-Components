@@ -11,16 +11,19 @@ public with sharing class UserMenuController {
     }
 
     @AuraEnabled
-    public static Billing__c addBilling(Reservation__c reservation, Service__c service){
-        System.debug('before newBilling');
-        Billing__c newBilling = new Billing__c(
+    public static Service_Billing__c addBilling(Reservation__c reservation, Service__c service){
+        Id billingId = ShowBillingDataController.getBillingByReservationId(reservation.Id);
+        System.debug('billingId: ' + billingId);
+
+        Service_Billing__c newServiceBilling = new Service_Billing__c(
             Name = service.Name,
-            Reservation__c = reservation.Id,
-            Service__c = service.Id
+            Service__c = service.Id,
+            Billing__c = billingId
         );
     
-        insert newBilling;
-        return newBilling;
+        insert newServiceBilling;
+        System.debug('newServiceBilling inserted');
+        return newServiceBilling;
     }
 
     private static String getHotelId(String reservationId){

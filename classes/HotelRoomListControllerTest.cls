@@ -57,16 +57,15 @@ private class HotelRoomListControllerTest {
 
         // INSERT RESERVATION
         Reservation__c newReservation = new Reservation__c(
-            Check_In__c	= Date.newInstance(2019,7,4),
+            Check_In__c = Date.newInstance(2019,7,4),
             Check_Out__c = Date.newInstance(2019,7,7),
             Guest__c = newGuest.Id,
-            Room__c	= bookedRoom.Id,
-            Reservation_Cost__c = 100
+            Room__c = bookedRoom.Id
         );
         insert newReservation;   
     }
     
-	@isTest static void getRoomsTest() {
+    @isTest static void getRoomsTest() {
         Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
         
         Test.startTest();

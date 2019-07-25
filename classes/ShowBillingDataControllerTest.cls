@@ -31,33 +31,30 @@ private class ShowBillingDataControllerTest {
 
         // INSERT RESERVATION
         Reservation__c newReservation = new Reservation__c(
-            Check_In__c	= Date.newInstance(2019,7,4),
+            Check_In__c = Date.newInstance(2019,7,4),
             Check_Out__c = Date.newInstance(2019,7,7),
             Guest__c = newGuest.Id,
-            Room__c	= newRoom.Id,
-            Reservation_Cost__c = 100
+            Room__c = newRoom.Id
         );
         insert newReservation;
         
         // INSERT SERVICE
         Service__c newService = new Service__c(
-        	Name = 'Test service',
+            Name = 'Test service',
             Hotel__c = newHotel.Id,
             Price__c = 20
         );
         insert newService;
     
-    	// INSERT BILLING
-    	Billing__c newBilling = new Billing__c(
-            Name = newService.Name,
-            Reservation__c = newReservation.Id,
-            Service__c = newService.Id
+        // INSERT BILLING
+        Billing__c newBilling = new Billing__c(
+            Name = newService.Name
         );
         insert newBilling;
     }
     
     @isTest static void ShowBillingDataControllerTest() {
-      	Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
+        Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
         Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
         Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
         Reservation__c newReservation = [SELECT Id FROM Reservation__c WHERE Guest__c = :newGuest.Id AND Room__c = :newRoom.Id LIMIT 1];

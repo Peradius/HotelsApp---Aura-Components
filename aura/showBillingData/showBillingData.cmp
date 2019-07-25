@@ -1,7 +1,7 @@
 <aura:component controller="ShowBillingDataController">
 	<aura:attribute name="reservation" type="Reservation__c" />
 	<aura:attribute name="reservations" type="Reservation__c[]" />
-	<aura:attribute name="billings" type="Billing__c[]" />
+	<aura:attribute name="billings" type="Service_Billing__c[]" />
 	<aura:attribute name="reservationTotalBilling" type="Decimal" />
 	<aura:attribute name="showTotalCost" type="Boolean" default="false" />
 

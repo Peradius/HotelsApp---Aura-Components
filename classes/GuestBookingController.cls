@@ -8,11 +8,10 @@ public with sharing class GuestBookingController {
 
      @AuraEnabled
      public static Guest__c findEmail(String email){
-         try {
-             return [SELECT Name, First_Name__c, Last_Name__c, Email__c, Phone__c FROM Guest__c WHERE Email__c = :email];
-         } catch(Exception e) {
-             return null;
-         }
-         
+        List <Guest__c> guests = [SELECT Name, First_Name__c, Last_Name__c, Email__c, Phone__c FROM Guest__c WHERE Email__c = :email];
+        if (guests.size()==1){
+            return guests[0];
+        }
+        return null;     
      }
 }

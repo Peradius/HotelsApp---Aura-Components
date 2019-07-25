@@ -1,7 +1,7 @@
 @isTest
 private class UserMenuControllerTest {   
     @testSetup static void setup() {
-    	// INSERT HOTEL
+        // INSERT HOTEL
         Hotel__c newHotel = new Hotel__c(
             Name = 'Hotel Test', 
             Address__c = 'Testowa 1',
@@ -31,17 +31,16 @@ private class UserMenuControllerTest {
 
         // INSERT RESERVATION
         Reservation__c newReservation = new Reservation__c(
-            Check_In__c	= Date.newInstance(2019,7,4),
+            Check_In__c = Date.newInstance(2019,7,4),
             Check_Out__c = Date.newInstance(2019,7,7),
             Guest__c = newGuest.Id,
-            Room__c	= newRoom.Id,
-            Reservation_Cost__c = 100
+            Room__c = newRoom.Id
         );
         insert newReservation;
         
         // INSERT SERVICE
         Service__c newService = new Service__c(
-        	Name = 'Test service',
+            Name = 'Test service',
             Hotel__c = newHotel.Id,
             Price__c = 20
         );
@@ -52,7 +51,7 @@ private class UserMenuControllerTest {
         Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
         
         Test.startTest();
-        	List<Reservation__c> reservations = UserMenuController.getReservations(newGuest.Id);
+            List<Reservation__c> reservations = UserMenuController.getReservations(newGuest.Id);
         Test.stopTest();
         
         System.assertEquals(1, reservations.size());
@@ -67,7 +66,7 @@ private class UserMenuControllerTest {
         
         Test.startTest();
         
-        Billing__c billingTest = UserMenuController.orderService(newReservation, newService);
+        Billing__c billingTest = UserMenuController.addBilling(newReservation, newService);
         List<Billing__c> billingList = [SELECT Id FROM Billing__c];
         
         Test.stopTest();

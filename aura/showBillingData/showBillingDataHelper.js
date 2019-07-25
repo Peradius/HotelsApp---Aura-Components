@@ -11,7 +11,13 @@
 				var billings = action.getReturnValue();
 				component.set("v.billings", billings);
 
-				var sum = component.get("v.reservation").Reservation_Cost__c;
+				// Initial cost : price for the room reservation
+				var res = component.get("v.reservation").Check_In__c;
+				var sum = component.get("v.reservation").Reservation_Cost__c; 
+				console.log(" =========== reservation : " + res);
+				console.log(" =========== sum : " + sum);
+
+				// Another costs : additional services
 				for(var i = 0; i < billings.length; i++) {
 					sum += billings[i].Service__r.Price__c;
 				}

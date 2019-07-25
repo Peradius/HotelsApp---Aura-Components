@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Service-Billing</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Services-Billings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Billing --></label>
+        <name>Billing__c</name>
+        <relationshipLabel><!-- Services-Billings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Service --></label>
+        <name>Service__c</name>
+        <relationshipLabel><!-- Services-Billings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
