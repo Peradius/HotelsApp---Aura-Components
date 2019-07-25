@@ -35,8 +35,9 @@
 				var guest = response.getReturnValue();
 				component.set("v.guest", guest);
 				component.set("v.emailNotFound", false);
-				this.sendGuestData(guest);
 				this.sendPageTraverseEvent(component);
+				this.sendGuestData(guest);
+				
 			} else {
 				console.log("Email " + emailValue + " not found!");
 				console.log(response);
@@ -65,6 +66,7 @@
             "pageThree" : false,
             "pageFour" : true
         });
-        traverseEvent.fire();
+		traverseEvent.fire();
+		console.log("Traverse Event sent!");
     }
 })

@@ -32,6 +32,7 @@
 		var service = event.getSource().get("v.value");
 		console.log("Service clicked: " + service.Id);
 		var reservation = component.get("v.reservation");
+		console.log("reservation : " + reservation.Id);
 		helper.orderService(component, reservation, service);
 	},
 

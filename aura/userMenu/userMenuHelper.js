@@ -41,8 +41,8 @@
 	},
 
 	orderService : function(component, reservation, service) {
-		var action = component.get("c.orderService");
-		console.log("oderService entered");
+		var action = component.get("c.addBilling");
+		console.log("addBilling entered");
 		action.setParams({
 			"reservation" : reservation,
 			"service" : service

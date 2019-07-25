@@ -16,7 +16,6 @@
         var emailValue = component.get("v.email");
         console.log("Entered email: " + emailValue);
         helper.findEmail(component, emailValue);
-        // helper.sendPageTraverseEvent();
     },
 
     switchToggle : function(component, event, helper) {

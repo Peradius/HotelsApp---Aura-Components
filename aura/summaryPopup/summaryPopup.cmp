@@ -9,7 +9,7 @@
     <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
 
     <div class="slds-scope">
-        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
             <div class="slds-modal__container">
                                                 <!-- MODAL HEADER -->
                 <div class="slds-scrollable_y" >
