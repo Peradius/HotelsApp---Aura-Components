@@ -15,6 +15,7 @@ private class GuestBookingControllerTest {
     
     @isTest static void findEmailTrue() {
         Guest__c newGuest = new Guest__c(First_Name__c = 'Peter', Last_Name__c = 'Alloy', Email__c = 'testcase@test.com');
+        insert newGuest;
         String email = 'testcase@test.com';
         Test.startTest();
 

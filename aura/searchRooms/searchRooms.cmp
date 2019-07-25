@@ -15,10 +15,10 @@
         <div class="slds-grid slds-p-around_medium">
             <div class="slds-col slds-grid slds-box slds-theme_shade"> 
                 <div class="slds-col">
-                    <lightning:input type="date" value="{!v.checkInDate}" placeholder="Check-In Date" required="true" onchange="{!c.updateFiltersTop}"/>
+                    <lightning:input type="date" value="{!v.checkInDate}" label="Check-In Date" placeholder="Check-In Date" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
                 <div class="slds-col">
-                    <lightning:input type="date" value="{!v.checkOutDate}" placeholder="Check-Out Date" required="true" onchange="{!c.updateFiltersTop}"/>
+                    <lightning:input type="date" value="{!v.checkOutDate}" label="Check-Out Date" placeholder="Check-Out Date" required="true" onchange="{!c.updateFiltersTop}"/>
                 </div>
                 <div class="slds-col">
                     <lightning:input type="number" value="{!v.peopleInRoom}" label="People in the room" min="1" step="1" required="true" onchange="{!c.updateFiltersTop}"/>

@@ -11,7 +11,7 @@ public with sharing class UserMenuController {
     }
 
     @AuraEnabled
-    public static Billing__c addService(Reservation__c reservation, Service__c service){
+    public static Billing__c orderService(Reservation__c reservation, Service__c service){
         Billing__c newBilling = new Billing__c(
             Name = service.Name,
             Reservation__c = reservation.Id,

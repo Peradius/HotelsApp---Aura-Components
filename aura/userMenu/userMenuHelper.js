@@ -11,6 +11,7 @@
 				var reservations = action.getReturnValue();
 				component.set("v.reservations", reservations);
 				console.log("Reservations retrieved!");
+				this.sumAllReservations(component);
 			} else {
 				console.log("Error retrieveing reservations");
 				console.log(response);
@@ -40,7 +41,7 @@
 	},
 
 	orderService : function(component, reservation, service) {
-		var action = component.get("c.addService");
+		var action = component.get("c.orderService");
 		console.log("oderService entered");
 		action.setParams({
 			"reservation" : reservation,

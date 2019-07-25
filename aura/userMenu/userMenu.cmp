@@ -6,6 +6,7 @@
 	<aura:attribute name="services" type="Service__c" />
 	<aura:attribute name="showReservationDetails" type="Boolean" default="false" />
 	<aura:attribute name="showBillingPage" type="Boolean" default="false" />
+	<aura:attribute name="totalCharge" type="Decimal" default="0" />
 
 	<aura:handler name="billingTraverseEvent" event="c:billingTraverseEvent" action="{!c.handleShowBilling}" />
 
@@ -35,9 +36,9 @@
 								<p class="slds-text-body-regular"> <lightning:formattedText value="{!'Last Name: ' + v.guest.Last_Name__c}" /> </p>
 								<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Phone: ' + v.guest.Phone__c}" /> </p>
 								<p class="slds-text-body_regular"> <lightning:formattedText value="{!'Email: ' + v.guest.Email__c}" /> </p>
-								<p class="slds-text-body-regular" style="color: crimson">Current charge:
-										<!-- <lightning:formattedNumber value="{!v.guest.Charge__c}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/> -->
-								</p>
+								<!-- <p class="slds-text-body-regular" style="color: crimson">Current charge:
+									<lightning:formattedNumber value="{!v.totalCharge}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency"/>
+								</p> -->
 							<aura:if isTrue="{!v.showUserChangeData}">
 								<c:changeUserDataModal guest="{!v.guest}" />
 							</aura:if>

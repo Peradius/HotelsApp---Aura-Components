@@ -4,7 +4,7 @@
 		console.log(guest.First_Name__c);
 		component.set("v.guest", guest);
 		component.set("v.loggedIn", "true");
-		helper.queryReservations(component, guest);
+		helper.queryReservations(component, guest);	
 	},
 
 	handleChangeUserDataModal : function(component, event, helper) {
