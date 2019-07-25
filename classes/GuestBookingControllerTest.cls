@@ -1,7 +1,12 @@
 @isTest
 private class GuestBookingControllerTest {
-    @isTest static void createGuest() {
+    @testSetup static void setup() {
         Guest__c newGuest = new Guest__c(First_Name__c = 'Peter', Last_Name__c = 'Alloy', Email__c = 'testcase@test.com');
+        insert newGuest;
+    }
+    
+    @isTest static void createGuest() {
+        Guest__c newGuest = new Guest__c(First_Name__c = 'Adam', Last_Name__c = 'Malloc', Email__c = 'malloc@test.com');
         Test.startTest();
 
         guestBookingController.createGuest(newGuest);
@@ -14,8 +19,6 @@ private class GuestBookingControllerTest {
     }
     
     @isTest static void findEmailTrue() {
-        Guest__c newGuest = new Guest__c(First_Name__c = 'Peter', Last_Name__c = 'Alloy', Email__c = 'testcase@test.com');
-        insert newGuest;
         String email = 'testcase@test.com';
         Test.startTest();
 
@@ -28,9 +31,6 @@ private class GuestBookingControllerTest {
     }
 
     @isTest static void findEmailFalse() {
-        Guest__c newGuest = new Guest__c(First_Name__c = 'Peter', Last_Name__c = 'Alloy', Email__c = 'testcase@test.com');
-        insert newGuest;
-
         String email = 'notExists@test.com';
         Test.startTest();
 

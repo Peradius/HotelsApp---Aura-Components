@@ -1,7 +1,7 @@
 @isTest
 private class HotelRoomListControllerTest {
-	@isTest static void getRoomsTest() {
-        // INSERT HOTEL
+    @testSetup static void setup() {
+    // INSERT HOTEL
         Hotel__c newHotel = new Hotel__c(
             Name = 'Hotel Test', 
             Address__c = 'Testowa 1',
@@ -43,10 +43,11 @@ private class HotelRoomListControllerTest {
             Price_for_Night__c = 40,
             Executive_Room__c = false
         );
+        
         insert newRooms;
         insert bookedRoom;
-
-        // INSERT GUEST AND RESERVATION
+        
+        // INSERT GUEST
         Guest__c newGuest = new Guest__c(
             First_Name__c = 'Peter',
             Last_Name__c = 'Alloy',
@@ -54,14 +55,20 @@ private class HotelRoomListControllerTest {
         );
         insert newGuest;
 
+        // INSERT RESERVATION
         Reservation__c newReservation = new Reservation__c(
             Check_In__c	= Date.newInstance(2019,7,4),
             Check_Out__c = Date.newInstance(2019,7,7),
             Guest__c = newGuest.Id,
-            Room__c	= bookedRoom.Id
+            Room__c	= bookedRoom.Id,
+            Reservation_Cost__c = 100
         );
-        insert newReservation;
-
+        insert newReservation;   
+    }
+    
+	@isTest static void getRoomsTest() {
+        Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
+        
         Test.startTest();
 
         String hotelId = newHotel.Id;

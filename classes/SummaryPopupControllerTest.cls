@@ -1,7 +1,7 @@
 @isTest
 private class SummaryPopupControllerTest {
-    @isTest static void createReservationTest() {
-        // INSERT HOTEL
+    @testSetup static void setup() {
+    	// INSERT HOTEL
         Hotel__c newHotel = new Hotel__c(
             Name = 'Hotel Test', 
             Address__c = 'Testowa 1',
@@ -20,15 +20,21 @@ private class SummaryPopupControllerTest {
             Executive_Room__c = false
         );
         insert newRoom;
-
-        // INSERT GUEST AND RESERVATION
+        
+        // INSERT GUEST
         Guest__c newGuest = new Guest__c(
             First_Name__c = 'Peter',
             Last_Name__c = 'Alloy',
             Email__c = 'testcase@test.com'
         );
         insert newGuest;
-
+    }
+    
+    @isTest static void createReservationTest() {
+        Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
+        Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
+        Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
+        
         Test.startTest();
 
         Date checkIn = Date.newInstance(2019,7,4);

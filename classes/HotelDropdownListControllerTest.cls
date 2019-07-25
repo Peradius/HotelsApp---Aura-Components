@@ -1,7 +1,6 @@
 @isTest
 private class HotelDropdownListControllerTest {
-    
-    @isTest static void getHotelsTestAll() {
+    @testSetup static void setup() {
         List<Hotel__c> hotels = new List<Hotel__c>();
 
         Hotel__c newHotel = new Hotel__c(
@@ -30,7 +29,9 @@ private class HotelDropdownListControllerTest {
 
         hotels.add(newHotel);
         insert hotels;
-
+    }
+    
+    @isTest static void getHotelsTestAll() {
         Test.startTest();
 
         List<Hotel__c> hotelsTest = HotelDropdownListController.getHotels(2, 'Testowo');
@@ -41,35 +42,6 @@ private class HotelDropdownListControllerTest {
     }
 
     @isTest static void getHotelsTestNoRating() {
-        List<Hotel__c> hotels = new List<Hotel__c>();
-
-        Hotel__c newHotel = new Hotel__c(
-            Name = 'Hotel Test', 
-            Address__c = 'Testowa 1',
-            City__c = 'Testowo',
-            Rating__c = 2
-        );
-        hotels.add(newHotel);
-
-        newHotel = new Hotel__c(
-            Name = 'Hotel Test 2', 
-            Address__c = 'Testowa 2',
-            City__c = 'Testowo',
-            Rating__c = 1
-        );
-
-        hotels.add(newHotel);
-
-        newHotel = new Hotel__c(
-            Name = 'Hotel Test 3', 
-            Address__c = 'Testowa 3',
-            City__c = 'Testowiron',
-            Rating__c = 1
-        );
-
-        hotels.add(newHotel);
-        insert hotels;
-
         Test.startTest();
 
         List<Hotel__c> hotelsTest = HotelDropdownListController.getHotels(null, 'Testowo');
@@ -80,36 +52,7 @@ private class HotelDropdownListControllerTest {
     }
 
     @isTest static void getHotelsTestNoCity() {
-        List<Hotel__c> hotels = new List<Hotel__c>();
-
-        Hotel__c newHotel = new Hotel__c(
-            Name = 'Hotel Test', 
-            Address__c = 'Testowa 1',
-            City__c = 'Testowo',
-            Rating__c = 2
-        );
-        hotels.add(newHotel);
-
-        newHotel = new Hotel__c(
-            Name = 'Hotel Test 2', 
-            Address__c = 'Testowa 2',
-            City__c = 'Testowo',
-            Rating__c = 1
-        );
-
-        hotels.add(newHotel);
-
-        newHotel = new Hotel__c(
-            Name = 'Hotel Test 3', 
-            Address__c = 'Testowa 3',
-            City__c = 'Testowiron',
-            Rating__c = 1
-        );
-
-        hotels.add(newHotel);
-        insert hotels;
-
-        Test.startTest();
+     	Test.startTest();
 
         List<Hotel__c> hotelsTest = HotelDropdownListController.getHotels(2, null);
 
@@ -119,35 +62,6 @@ private class HotelDropdownListControllerTest {
     }
 
     @isTest static void getHotelsTestNothing() {
-        List<Hotel__c> hotels = new List<Hotel__c>();
-
-        Hotel__c newHotel = new Hotel__c(
-            Name = 'Hotel Test', 
-            Address__c = 'Testowa 1',
-            City__c = 'Testowo',
-            Rating__c = 2
-        );
-        hotels.add(newHotel);
-
-        newHotel = new Hotel__c(
-            Name = 'Hotel Test 2', 
-            Address__c = 'Testowa 2',
-            City__c = 'Testowo',
-            Rating__c = 1
-        );
-
-        hotels.add(newHotel);
-
-        newHotel = new Hotel__c(
-            Name = 'Hotel Test 3', 
-            Address__c = 'Testowa 3',
-            City__c = 'Testowiron',
-            Rating__c = 1
-        );
-
-        hotels.add(newHotel);
-        insert hotels;
-
         Test.startTest();
 
         List<Hotel__c> hotelsTest = HotelDropdownListController.getHotels(null, null);
