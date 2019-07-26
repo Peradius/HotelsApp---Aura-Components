@@ -32,7 +32,7 @@
                             <form class="slds-form--stacked"> 
                                 <lightning:input aura:id="emailValidation" label="Enter email" 
                                                 value="{!v.email}" required="true"/>
-                                <lightning:button label="Submit" onclick="{!c.checkForEmail}" variant="brand" />
+                                <lightning:button label="Submit" onclick="{!c.submitEmail}" variant="brand" />
                             </form>
                             <aura:renderIf isTrue="{!v.emailNotFound}">
                                 <div style="color: red; font: 15px">
@@ -57,7 +57,7 @@
                                 <lightning:input aura:id="guestform" type="email" label="E-Mail" 
                                                 value="{!v.newGuest.Email__c}" required="true"/>
                     
-                                <lightning:button label="Submit" onclick="{!c.createNewGuest}" variant="brand" />
+                                <lightning:button label="Submit" onclick="{!c.submitNewGuest}" variant="brand" />
                             </form>
                         </aura:renderIf>
                         <!-- /User has no account -->                    

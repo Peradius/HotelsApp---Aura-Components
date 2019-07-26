@@ -1,15 +1,25 @@
 ({
-    showPopupHelper: function(component, componentId, className){
-        var modal = component.find(componentId);
-        $A.util.removeClass(modal, className + 'hide');
-        $A.util.addClass(modal, className + 'open');
+    handleConfirmBooking : function(component) {
+        var guest = component.get("v.guest");
+        var room = component.get("v.room");
+        var checkIn = component.get("v.checkIn");
+        var checkOut = component.get("v.checkOut");
+
+        this.createReservation(component, guest, room, checkIn, checkOut);
+        this.sendTraverseEvent(true, false);
+        alert("Reservation successful!");
     },
-    
-    hidePopupHelper: function(component, componentId, className){
-        var modal = component.find(componentId);
-        $A.util.addClass(modal, className+'hide');
-        $A.util.removeClass(modal, className+'open');
-        component.set("v.body", "");
+
+    sendTraverseEvent : function(pageOne, pageThree) {
+        let traverseEvent = $A.get("e.c:pageTraverseEvent");
+        traverseEvent.setParams({
+            "pageOne" : pageOne,
+            "pageTwo" : false,
+            "pageThree" : pageThree,
+            "pageFour" : false
+        });
+        traverseEvent.fire();
+        console.log("* pageTraverseEvent sent from summaryPopupHelper *");
     },
 
     createReservation : function(component, guest, room, checkIn, checkOut) {
@@ -21,15 +31,6 @@
             "checkOut" : checkOut
         });
 
-        action.setCallback(this, function(response){
-			var state = response.getState();
-			if (state === "SUCCESS") {
-				console.log("Reservation inserted!");
-			} else {
-				console.log("Error setting guests");
-				console.log(response);
-			}
-		});
 		$A.enqueueAction(action);
     }
 })

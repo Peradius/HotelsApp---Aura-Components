@@ -9,6 +9,6 @@
     <lightning:input type="text" label="City" value="{!v.city}"/>
 
     <p class="slds-align_absolute-center slds-align-bottom slds-m-top--large">
-        <lightning:button label="Filter" title="Filter" onclick="{!c.processFiltering}" variant="brand" />
+        <lightning:button label="Filter" title="Filter" onclick="{!c.filterClicked}" variant="brand" />
     </p>
 </aura:component>

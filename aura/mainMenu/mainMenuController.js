@@ -1,41 +1,30 @@
 ({
 	handlePageTraverseEvent : function(component, event, helper) {
-		var pageOne = event.getParam("pageOne");
-		var pageTwo = event.getParam("pageTwo");
-		var pageThree = event.getParam("pageThree");
-		var pageFour = event.getParam("pageFour");
-
-		component.set("v.pageOneOpened", pageOne);
-		component.set("v.pageTwoOpened", pageTwo);
-		component.set("v.pageThreeOpened", pageThree);
-		component.set("v.pageFourOpened", pageFour);
+		helper.handlePageTraverse(component, event);
 	},
+
+	handleReservationDataEvent :  function(component, event, helper){
+		helper.handleReservationData(component, event);
+    },
 	
 	handleHotelDataEvent : function(component, event, helper) {
+		console.log("* sendHotelData received in mainMenuController *");
+
 		var hotel = event.getParam("hotel");
-		console.log("Received data in mainMenuController: hotelData");
 		component.set("v.hotel", hotel);
 	},
 
 	handleRoomDataEvent : function(component, event, helper) {
+		console.log("* sendRoomData received in mainMenuController *");
+
 		var room = event.getParam("room");
-		console.log("Received data in mainMenuController: roomData");
 		component.set("v.room", room);
 	},
 
 	handleGuestDataEvent : function(component, event, helper) {
-		var guest = event.getParam("guest");
-		console.log("Received data in mainMenuController: guestData");
-		component.set("v.guest", guest);
-	},
+		console.log("* sendGuestData received in mainMenuController *");
 
-	handleReservationDataEvent :  function(component, event, helper){
-        var checkIn = event.getParam("checkIn");
-		var checkOut = event.getParam("checkOut");
-		var totalPrice = event.getParam("totalPrice");
-		console.log("total Price: " + totalPrice);
-        component.set("v.checkIn", checkIn);
-		component.set("v.checkOut", checkOut);
-		component.set("v.totalPrice", totalPrice);
-    }
+		var guest = event.getParam("guest");
+		component.set("v.guest", guest);
+	}
 })

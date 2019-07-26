@@ -1,4 +1,13 @@
 ({
+	handleGuestData : function(component, event) {
+		console.log("* sendGuestData received in userMenuHelper *");
+
+		var guest = event.getParam("guest");
+		component.set("v.guest", guest);
+		component.set("v.loggedIn", true);
+		this.queryReservations(component, guest);	
+	},
+
 	queryReservations : function(component, guest) {
 		var action = component.get("c.getReservations");
 		action.setParams({
@@ -10,8 +19,7 @@
 			if (state === "SUCCESS") {
 				var reservations = action.getReturnValue();
 				component.set("v.reservations", reservations);
-				console.log("Reservations retrieved!");
-				this.sumAllReservations(component);
+				console.log("Success setting reservations in userMenu");
 			} else {
 				console.log("Error retrieveing reservations");
 				console.log(response);
@@ -31,7 +39,7 @@
 			if (state === "SUCCESS") {
 				var services = action.getReturnValue();
 				component.set("v.services", services);
-				console.log("Services retrieved!");
+				console.log("Success setting services in userMenu");
 			} else {
 				console.log("Error retrieveing services");
 				console.log(response);
@@ -40,11 +48,14 @@
 		$A.enqueueAction(action);
 	},
 
-	orderService : function(component, reservation, service) {
+	orderService : function(component, event) {
+		var service = event.getSource().get("v.value");
+		var reservation = component.get("v.reservation");
+
+		console.log("orderService = = reservation : " + reservation.Id + " | service : " + service.Id);
 		var action = component.get("c.addBilling");
-		console.log("addBilling entered");
 		action.setParams({
-			"reservation" : reservation,
+			"reservationId" : reservation.Id,
 			"service" : service
 		});
 
@@ -58,5 +69,12 @@
 			}
 		});
 		$A.enqueueAction(action);
+	},
+
+	handleClickReservation : function(component, event){
+		let reservation = event.getSource().get("v.value");
+		component.set("v.reservation", reservation);
+		component.set("v.showReservationDetails", true);
+		this.queryServices(component, reservation.Id);
 	}
 })

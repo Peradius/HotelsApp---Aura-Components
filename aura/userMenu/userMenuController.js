@@ -1,39 +1,32 @@
 ({
     handleGuestDataEvent :  function(component, event, helper){
-		var guest = event.getParam("guest");
-		console.log(guest.First_Name__c);
-		component.set("v.guest", guest);
-		component.set("v.loggedIn", "true");
-		helper.queryReservations(component, guest);	
+		helper.handleGuestData(component, event);
 	},
 
 	handleChangeUserDataModal : function(component, event, helper) {
+		console.log("* showChangeUserDataModal received in userMenuHelper *");
+
 		var value = event.getParam("showModal");
 		component.set("v.showUserChangeData", value);
 	},
 
-	showBilling : function(component, event, helper) {
-		component.set("v.showBillingPage", true);
-	},
-
 	handleShowBilling : function(component, event, helper) {
+		console.log("* billingTraverseEvent received in userMenuHelper *");
+
 		var value = event.getParam("showBillingPage");
 		component.set("v.showBillingPage", value);
 	},
 	
 	clickReservation : function(component, event, helper) {
-		var reservation = event.getSource().get("v.value");
-		component.set("v.reservation", reservation);
-		component.set("v.showReservationDetails", "true");
-		helper.queryServices(component, reservation.Id);
+		helper.handleClickReservation(component, event);
 	},
 
-	orderService : function(component, event, helper) {
-		var service = event.getSource().get("v.value");
-		console.log("Service clicked: " + service.Id);
-		var reservation = component.get("v.reservation");
-		console.log("reservation : " + reservation.Id);
-		helper.orderService(component, reservation, service);
+	orderClicked : function(component, event, helper) {
+		helper.orderService(component, event);
+	},
+
+	showBilling : function(component, event, helper) {
+		component.set("v.showBillingPage", true);
 	},
 
 	changeUserData :  function(component, event, helper) {

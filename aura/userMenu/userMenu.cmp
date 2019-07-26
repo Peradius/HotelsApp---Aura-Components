@@ -10,7 +10,6 @@
 	<aura:attribute name="totalCharge" type="Decimal" default="0" />
 
 	<aura:handler name="billingTraverseEvent" event="c:billingTraverseEvent" action="{!c.handleShowBilling}" />
-
 	<aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}" />
 	<aura:handler name="showChangeUserDataModal" event="c:showChangeUserDataModal" action="{!c.handleChangeUserDataModal}" />
 
@@ -90,7 +89,7 @@
 											<p class="slds-text-heading_medium"> <lightning:formattedText value="{! service.Name}" /> </p>
 											<p class="slds-text-body_regular"> <lightning:formattedText value="{! 'Price: ' + service.Price__c}" /> </p>
 											<p class="slds-text-body_small"> <lightning:formattedText value="{! service.Description__c}" /> </p>
-											<p><lightning:button label="Order" title="Buy service" onclick="{!c.orderService}" value="{!service}" /></p>
+											<p><lightning:button label="Order" title="Buy service" onclick="{!c.orderClicked}" value="{!service}" /></p>
 										</div>
 									</div>
 								</aura:iteration>

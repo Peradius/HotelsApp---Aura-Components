@@ -17,12 +17,6 @@
     <aura:handler event="c:sendReservationData" action="{!c.handleReservationDataEvent}"/>
     <aura:handler event="c:pageTraverseEvent" action="{!c.handlePageTraverseEvent}"/>
 
-
-                            <!-- pageOne : c:searchHotels
-                            pageTwo : c:searchRooms 
-                            pageThree : c:bookingSummary 
-                            pageFour : c:summaryPopup -->
-
     <aura:if isTrue="{!v.pageOneOpened}" >
         <c:searchHotels />
     </aura:if>

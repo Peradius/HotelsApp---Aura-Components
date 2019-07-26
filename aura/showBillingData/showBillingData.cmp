@@ -31,7 +31,7 @@
 									<lightning:formattedNumber value="{!}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency" />
 									</p> -->
 									<p class="slds-text-body_regular"> <lightning:formattedText value="{! reservation.Check_In__c + ' - ' + reservation.Check_Out__c}" /> </p>
-									<p><lightning:button label="Show finances" title="Show finances" onclick="{!c.showFinances}" value="{!reservation}" /></p>
+									<p><lightning:button label="Show finances" title="Show finances" onclick="{!c.financesClicked}" value="{!reservation}" /></p>
 								</div>
 							</div>
 																			<!-- /IMAGE AND INFO -->

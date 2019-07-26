@@ -1,4 +1,17 @@
 ({
+	handleConfirm : function(component) {
+		var validGuest = component.find('guestform').reduce(function (validSoFar, inputCmp) {
+            // Displays error messages for invalid fields
+            inputCmp.showHelpMessageIfInvalid();
+            return validSoFar && inputCmp.get('v.validity').valid;
+        }, true);
+        if(validGuest){
+            // update an existing guest
+			var guest = component.get("v.guest");
+           	this.updateGuest(component, guest);
+		}
+	},
+
 	updateGuest : function(component, guest) {
 		var action = component.get("c.updateGuest");
 		action.setParams({
@@ -27,7 +40,7 @@
 			"guest" : guest
 		});
 		sendGuestDataEvent.fire();
-		console.log("Send Guest Data Event sent!");
+		console.log("* sendGuestData sent from changeUserDataModalHelper *");
 	},
 
 	closeModal : function(component) {
@@ -36,5 +49,6 @@
 			"showModal" : false
 		});
 		closeEvent.fire();
+		console.log("* showChangeUserDataModal sent from changeUserDataModalHelper *");
 	}
 })

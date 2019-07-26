@@ -1,4 +1,20 @@
 ({
+	showFinances : function(component, event) {
+		var reservation = event.getSource().get("v.value");
+		component.set("v.reservation", reservation);
+		
+		this.queryBilling(component, reservation);
+	},
+
+	handleBack : function(component) {
+		let billingEvent = component.getEvent("billingTraverseEvent");
+		billingEvent.setParams({
+			"showBillingPage" : false
+		});
+		billingEvent.fire();
+		console.log("* billingTraverseEvent sent from showBillingDataHelper *");
+	},
+
 	queryBilling : function(component, reservation) {
 		var action = component.get("c.getBillings");
 		action.setParams({
@@ -8,27 +24,29 @@
 		action.setCallback(this, function(response){
 			var state = response.getState();
 			if (state === "SUCCESS") {
-				var billings = action.getReturnValue();
+				let billings = action.getReturnValue();
 				component.set("v.billings", billings);
+				console.log("Success setting billings in showBillingData");
 
-				// Initial cost : price for the room reservation
-				var res = component.get("v.reservation").Check_In__c;
-				var sum = component.get("v.reservation").Reservation_Cost__c; 
-				console.log(" =========== reservation : " + res);
-				console.log(" =========== sum : " + sum);
-
-				// Another costs : additional services
-				for(var i = 0; i < billings.length; i++) {
-					sum += billings[i].Service__r.Price__c;
-				}
-
-				component.set("v.reservationTotalBilling", sum);
-				component.set("v.showTotalCost", true);
+				this.calculateTotalBilling(component, billings);
 			} else {
 				console.log("Error retrieveing billings");
 				console.log(response);
 			}
 		});
 		$A.enqueueAction(action);
+	},
+
+	calculateTotalBilling : function(component, billings) {
+		// Initial cost : price for the room reservation
+		var sum = component.get("v.reservation").Reservation_Cost__c;
+
+		// Another costs : additional services
+		for(var i = 0; i < billings.length; i++) {
+			sum += billings[i].Service__r.Price__c;
+		}
+
+		component.set("v.reservationTotalBilling", sum);
+		component.set("v.showTotalCost", true);
 	}
 })

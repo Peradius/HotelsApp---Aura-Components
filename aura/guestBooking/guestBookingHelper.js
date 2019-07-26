@@ -1,4 +1,17 @@
 ({
+	handleNewGuest : function(component) {
+		var validGuest = component.find('guestform').reduce(function (validSoFar, inputCmp) {
+            // Displays error messages for invalid fields
+            inputCmp.showHelpMessageIfInvalid();
+            return validSoFar && inputCmp.get('v.validity').valid;
+        }, true);
+        if(validGuest){
+            // Create new guest
+            var newGuest = component.get("v.newGuest");
+            this.createGuest(component, newGuest);
+        }
+	},
+
 	createGuest : function(component, guest) {
 		var action = component.get("c.createGuest");
 		action.setParams({
@@ -22,6 +35,9 @@
 	},
 
 	findEmail : function(component, emailValue) {
+		var emailValue = component.get("v.email");
+		console.log("Entered email: " + emailValue);
+		
 		var action = component.get("c.findEmail");
 		action.setParams({
 			"email" : emailValue
@@ -55,7 +71,7 @@
 			"guest" : guest
 		});
 		sendGuestDataEvent.fire();
-		console.log("Send Guest Data Event sent!");
+		console.log("* sendGuestData sent from guestBookingHelper *");
 	},
 
 	sendPageTraverseEvent : function() {
@@ -67,6 +83,6 @@
             "pageFour" : true
         });
 		traverseEvent.fire();
-		console.log("Traverse Event sent!");
+		console.log("* pageTraverseEvent sent from guestBookingHelper *");
     }
 })

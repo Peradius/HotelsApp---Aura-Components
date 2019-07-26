@@ -8,6 +8,6 @@
     <hr />
     <lightning:input type="checkbox" label="Executive room" value="{!v.isExecutive}" onchange="{!c.checkboxChange}"/>
     <p class="slds-align_absolute-center slds-m-top--large">
-        <lightning:button label="Filter" title="Filter" onclick="{!c.processFiltering}" variant="brand" />
+        <lightning:button label="Filter" title="Filter" onclick="{!c.filterClicked}" variant="brand" />
     </p>
 </aura:component>
