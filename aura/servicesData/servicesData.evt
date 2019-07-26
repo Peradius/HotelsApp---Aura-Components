@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="services" type="Service__c" />
+</aura:event>

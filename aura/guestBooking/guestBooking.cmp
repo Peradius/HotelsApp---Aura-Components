@@ -28,22 +28,22 @@
                     <!-- RIGHT(FORM) -->
                     <div class="slds-col slds-size_3-of-4 slds-box">
                         <!-- User has an account -->
-                        <aura:renderIf isTrue="{!v.hasAccountToggle}">
+                        <aura:if isTrue="{!v.hasAccountToggle}">
                             <form class="slds-form--stacked"> 
                                 <lightning:input aura:id="emailValidation" label="Enter email" 
                                                 value="{!v.email}" required="true"/>
                                 <lightning:button label="Submit" onclick="{!c.submitEmail}" variant="brand" />
                             </form>
-                            <aura:renderIf isTrue="{!v.emailNotFound}">
+                            <aura:if isTrue="{!v.emailNotFound}">
                                 <div style="color: red; font: 15px">
                                         Email wasn't found! Try again or create a new account!
                                 </div>
-                            </aura:renderIf>
-                        </aura:renderIf>
+                            </aura:if>
+                        </aura:if>
                         <!-- /User has an account -->
                                         
                         <!-- User has no account -->
-                        <aura:renderIf isTrue="{! !(v.hasAccountToggle)}">
+                        <aura:if isTrue="{! !(v.hasAccountToggle)}">
                             <form class="slds-form--stacked"> 
                                 <lightning:input aura:id="guestform" label="First Name" 
                                                 value="{!v.newGuest.First_Name__c}" required="true"/>
@@ -59,7 +59,7 @@
                     
                                 <lightning:button label="Submit" onclick="{!c.submitNewGuest}" variant="brand" />
                             </form>
-                        </aura:renderIf>
+                        </aura:if>
                         <!-- /User has no account -->                    
                     </div>
                     <!-- /RIGHT(FORM) -->

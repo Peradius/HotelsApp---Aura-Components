@@ -16,10 +16,6 @@
 		var value = event.getParam("showBillingPage");
 		component.set("v.showBillingPage", value);
 	},
-	
-	clickReservation : function(component, event, helper) {
-		helper.handleClickReservation(component, event);
-	},
 
 	orderClicked : function(component, event, helper) {
 		helper.orderService(component, event);

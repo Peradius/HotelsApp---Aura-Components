@@ -1,7 +1,6 @@
 <aura:component controller="UserMenuController" >
 	<aura:attribute name="guest" type="Guest__c" />
 	<aura:attribute name="loggedIn" type="Boolean" default="false" />
-	<aura:attribute name="reservation" type="Reservation__c" />
 	<aura:attribute name="reservations" type="Reservation__c[]" />
 	<aura:attribute name="services" type="Service__c" />
 	<aura:attribute name="showReservationDetails" type="Boolean" default="false" />
@@ -50,28 +49,7 @@
 							</div>
 						</div>
 						<div class="slds-col slds-box slds-size--2-of-3 slds-theme_shade">
-							<p class="slds-text-heading_large">
-								Your Reservations
-							</p>
-							<hr />
-							<aura:iteration items="{!v.reservations}" var="reservation">
-								<div class="slds-grid">
-																			<!-- IMAGE AND INFO -->
-									<div class="slds-media slds-col slds-box">
-										<div class="slds-media__figure slds-col slds-size_1-of-3">
-											<lightning:formattedRichText value="{!reservation.Room__r.Photo__c}" />
-										</div>
-
-										<div class="slds-media__body slds-col slds-size_2-of-3">
-											<p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no. ' + reservation.Room__r.Name}" /> </p>
-											<p class="slds-text-body_regular"> <lightning:formattedText value="{! reservation.Check_In__c + ' - ' + reservation.Check_Out__c}" /> </p>
-											<p class="slds-text-body_small"> <lightning:formattedText value="{! 'Single beds: ' + reservation.Room__r.Single_Beds__c + ' | Double beds: ' + reservation.Room__r.Double_Beds__c}" /> </p>
-											<p><lightning:button label="Show details" title="Show details" onclick="{!c.clickReservation}" value="{!reservation}" /></p>
-										</div>
-									</div>
-																					<!-- /IMAGE AND INFO -->
-								</div>
-							</aura:iteration>
+							<c:userMenuReservations reservations="{!v.reservations}" />
 						</div>
 					</div>
 																					<!-- RESERVATION DETAILS -->

@@ -28,26 +28,6 @@
 		$A.enqueueAction(action);
 	},
 
-	queryServices : function(component, reservationId) {
-		var action = component.get("c.getServices");
-		action.setParams({
-			"reservationId" : reservationId
-		});
-
-		action.setCallback(this, function(response){
-			var state = response.getState();
-			if (state === "SUCCESS") {
-				var services = action.getReturnValue();
-				component.set("v.services", services);
-				console.log("Success setting services in userMenu");
-			} else {
-				console.log("Error retrieveing services");
-				console.log(response);
-			}
-		});
-		$A.enqueueAction(action);
-	},
-
 	orderService : function(component, event) {
 		var service = event.getSource().get("v.value");
 		var reservation = component.get("v.reservation");
@@ -69,12 +49,5 @@
 			}
 		});
 		$A.enqueueAction(action);
-	},
-
-	handleClickReservation : function(component, event){
-		let reservation = event.getSource().get("v.value");
-		component.set("v.reservation", reservation);
-		component.set("v.showReservationDetails", true);
-		this.queryServices(component, reservation.Id);
 	}
 })
