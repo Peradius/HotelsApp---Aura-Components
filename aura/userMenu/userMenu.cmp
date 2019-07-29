@@ -7,7 +7,7 @@
 	
 	<aura:attribute name="totalCharge" type="Decimal" default="0" />
 
-	<aura:handler name="billingTraverseEvent" event="c:billingTraverseEvent" action="{!c.handleShowBilling}" />
+	<aura:handler event="c:billingTraverseEvent" action="{!c.handleShowBilling}" />
 	<aura:handler event="c:sendGuestData" action="{!c.handleGuestDataEvent}" />
 	<aura:handler name="showReservationDetailsEvent" event="c:showReservationDetailsEvent" action="{!c.handleShowReservationDetails}" />
 	<aura:handler name="showBillingPageEvent" event="c:showBillingPage" action="{!c.handleshowBillingPageEvent}" />

@@ -1,21 +1,10 @@
 ({
-	showFinances : function(component, event) {
-		var reservation = event.getSource().get("v.value");
-		component.set("v.reservation", reservation);
-		
-		this.queryBilling(component, reservation);
-	},
-
-	handleBack : function(component) {
-		let billingEvent = component.getEvent("billingTraverseEvent");
-		billingEvent.setParams({
-			"showBillingPage" : false
-		});
-		billingEvent.fire();
-		console.log("* billingTraverseEvent sent from showBillingDataHelper *");
-	},
-
 	queryBilling : function(component, reservation) {
+		// Set billing to null, so if the reservation has no billings, it wont show the
+		// billings from another reservation which has them
+		component.set("v.billings", null);
+
+
 		var action = component.get("c.getBillings");
 		action.setParams({
 			"reservationId" : reservation.Id
@@ -33,8 +22,7 @@
 				} else {
 					console.log("There is no additional billings");
 					this.calculateTotalBilling(component, null);
-				}
-				
+                }
 			} else {
 				console.log("Error retrieveing billings");
 				console.log(response);

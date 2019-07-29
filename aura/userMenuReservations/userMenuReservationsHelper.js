@@ -29,7 +29,6 @@
     
     sendServicesEvent : function(services, reservation) {
 		var sendServicesEvent = $A.get("e.c:servicesData");
-		console.log("Reservation = " + reservation);
 		sendServicesEvent.setParams({
 			"services" : services,
 			"reservation" : reservation

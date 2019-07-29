@@ -1,9 +1,9 @@
 ({
-	financesClicked : function(component, event, helper) {
-		helper.showFinances(component, event);
-	},
+    handleReservationEvent : function(component, event, helper) {
+        console.log("Retrieved reservation data in showBillingDataController");
+        let reservation = event.getParam("reservation");
+        component.set("v.reservation", reservation);
 
-	backClicked : function(component, event, helper) {
-		helper.handleBack(component);
-	}
+        helper.queryBilling(component, reservation);
+    }
 })
