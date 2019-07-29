@@ -17,8 +17,11 @@
 		component.set("v.showBillingPage", value);
 	},
 
-	orderClicked : function(component, event, helper) {
-		helper.orderService(component, event);
+	handleShowReservationDetails : function(component, event, helper) {
+		console.log("* showReservationDetailsEvent received in userMenuHelper *");
+
+		var value = event.getParam("showReservationDetails");
+		component.set("v.showReservationDetails", value);
 	},
 
 	showBilling : function(component, event, helper) {

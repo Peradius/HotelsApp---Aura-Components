@@ -25,10 +25,16 @@
 			var state = response.getState();
 			if (state === "SUCCESS") {
 				let billings = action.getReturnValue();
-				component.set("v.billings", billings);
-				console.log("Success setting billings in showBillingData");
-
-				this.calculateTotalBilling(component, billings);
+				
+				if (billings != null) {
+					component.set("v.billings", billings);
+					console.log("Success setting billings in showBillingData");
+					this.calculateTotalBilling(component, billings);
+				} else {
+					console.log("There is no additional billings");
+					this.calculateTotalBilling(component, null);
+				}
+				
 			} else {
 				console.log("Error retrieveing billings");
 				console.log(response);
@@ -41,9 +47,11 @@
 		// Initial cost : price for the room reservation
 		var sum = component.get("v.reservation").Reservation_Cost__c;
 
-		// Another costs : additional services
-		for(var i = 0; i < billings.length; i++) {
-			sum += billings[i].Service__r.Price__c;
+		if(billings != null) {
+			// Another costs : additional services
+			for(var i = 0; i < billings.length; i++) {
+				sum += billings[i].Service__r.Price__c;
+			}
 		}
 
 		component.set("v.reservationTotalBilling", sum);

@@ -1,3 +1,4 @@
 <aura:event type="APPLICATION">
-    <aura:attribute name="services" type="Service__c" />
+    <aura:attribute name="services" type="Service__c[]" />
+    <aura:attribute name="reservation" type="Reservation__c" />
 </aura:event>

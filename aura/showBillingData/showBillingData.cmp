@@ -26,10 +26,6 @@
 
 								<div class="slds-media__body slds-col slds-size_2-of-3">
 									<p class="slds-text-heading_medium"> <lightning:formattedText value="{!'Room no. ' + reservation.Room__r.Name}" /> </p>
-									<!-- <p class="slds-text-body_regular"> 
-										Total bill:
-									<lightning:formattedNumber value="{!}" currencyCode="EUR" minimumFractionDigits="2" maximumFractionDigits="2" style="currency" />
-									</p> -->
 									<p class="slds-text-body_regular"> <lightning:formattedText value="{! reservation.Check_In__c + ' - ' + reservation.Check_Out__c}" /> </p>
 									<p><lightning:button label="Show finances" title="Show finances" onclick="{!c.financesClicked}" value="{!reservation}" /></p>
 								</div>

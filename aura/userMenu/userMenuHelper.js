@@ -26,28 +26,5 @@
 			}
 		});
 		$A.enqueueAction(action);
-	},
-
-	orderService : function(component, event) {
-		var service = event.getSource().get("v.value");
-		var reservation = component.get("v.reservation");
-
-		console.log("orderService = = reservation : " + reservation.Id + " | service : " + service.Id);
-		var action = component.get("c.addBilling");
-		action.setParams({
-			"reservationId" : reservation.Id,
-			"service" : service
-		});
-
-		action.setCallback(this, function(response){
-			var state = response.getState();
-			if (state === "SUCCESS") {
-				console.log("Billing added!");
-			} else {
-				console.log("Error updating charge");
-				console.log(response);
-			}
-		});
-		$A.enqueueAction(action);
 	}
 })

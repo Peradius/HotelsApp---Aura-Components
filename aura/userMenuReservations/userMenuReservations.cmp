@@ -3,7 +3,8 @@
     <aura:attribute name="services" type="Service__c" />
 
     <aura:registerEvent name="sendServicesEvent" type="c:servicesData" />
-
+    <aura:registerEvent name="showReservationDetailsEvent" type="c:showReservationDetailsEvent" />
+    
     <p class="slds-text-heading_large">
         Your Reservations
     </p>
@@ -26,4 +27,4 @@
                                                             <!-- /IMAGE AND INFO -->
         </div>
     </aura:iteration>
-</aura:component>	
+</aura:component>
