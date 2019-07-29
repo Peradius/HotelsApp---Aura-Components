@@ -1,0 +1,26 @@
+<aura:component >
+    <aura:attribute name="guest" type="Guest__c" />
+    <aura:attribute name="showUserChangeData" type="Boolean" default="false" />
+
+    <aura:registerEvent name="showBillingPageEvent" type="c:showBillingPage" />
+
+    <aura:handler name="showChangeUserDataModal" event="c:showChangeUserDataModal" action="{!c.handleChangeUserDataModal}" />
+
+    <p class="slds-text-heading_large">
+            Your Data
+        </p>
+        <hr />
+            <p class="slds-text-body_regular"> <lightning:formattedText value="{!'First Name: ' + v.guest.First_Name__c}" /> </p>
+            <p class="slds-text-body-regular"> <lightning:formattedText value="{!'Last Name: ' + v.guest.Last_Name__c}" /> </p>
+            <p class="slds-text-body_regular"> <lightning:formattedText value="{!'Phone: ' + v.guest.Phone__c}" /> </p>
+            <p class="slds-text-body_regular"> <lightning:formattedText value="{!'Email: ' + v.guest.Email__c}" /> </p>
+        <aura:if isTrue="{!v.showUserChangeData}">
+            <c:changeUserDataModal guest="{!v.guest}" />
+        </aura:if>
+        <hr />
+        <div class="slds-grid">
+            <div class="slds-col slds-align-left slds-align-bottom"><lightning:button label="Change User Data" title="Change user data" onclick="{! c.changeUserData}"/></div>
+            <div class="slds-col slds-align-left slds-align-bottom"><lightning:button label="Show billing" title="Show billing" onclick="{! c.showBilling}"/></div>
+            <div class="slds-col slds-align-right slds-align-bottom"><lightning:button label="Logout" title="Logout" onclick="{!c.logout}" disabled="true" /></div>
+        </div>
+</aura:component>
