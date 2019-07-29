@@ -1,7 +1,7 @@
 @isTest
-private class UserMenuControllerTest {   
-    @testSetup static void setup() {
-        // INSERT HOTEL
+private class UserMenuReservationsControllerTest {
+     @testSetup static void setup() {
+    // INSERT HOTEL
         Hotel__c newHotel = new Hotel__c(
             Name = 'Hotel Test', 
             Address__c = 'Testowa 1',
@@ -31,7 +31,7 @@ private class UserMenuControllerTest {
         
         // INSERT BILLING
         Billing__c newBilling = new Billing__c(
-            Name = 'Name'
+        	Name = 'Name'
         );
         insert newBilling;
 
@@ -44,6 +44,13 @@ private class UserMenuControllerTest {
             Billing__c = newBilling.Id
         );
         insert newReservation;
+    }
+    
+    @isTest static void getServicesTest() {
+        Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
+        Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
+        Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
+        Reservation__c newReservation = [SELECT Id FROM Reservation__c WHERE Guest__c = :newGuest.Id AND Room__c = :newRoom.Id LIMIT 1];
         
         // INSERT SERVICE
         Service__c newService = new Service__c(
@@ -52,33 +59,28 @@ private class UserMenuControllerTest {
             Price__c = 20
         );
         insert newService;
+        
+        Test.startTest();
+        
+        List<Service__c> services = UserMenuReservationsController.getServices(newReservation.Id);
+        
+        Test.stopTest();
+        
+        System.assertEquals(1, services.size());
     }
     
-    @isTest static void getReservationsTest() {     
+    @isTest static void getServicesNullTest() {
+        Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
+        Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
         Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
+        Reservation__c newReservation = [SELECT Id FROM Reservation__c WHERE Guest__c = :newGuest.Id AND Room__c = :newRoom.Id LIMIT 1];
         
         Test.startTest();
-            List<Reservation__c> reservations = UserMenuController.getReservations(newGuest.Id);
+        
+        List<Service__c> services = UserMenuReservationsController.getServices(newReservation.Id);
+        
         Test.stopTest();
         
-        System.assertEquals(1, reservations.size());
+        System.assertEquals(1, services.size());
     }
-    
-    @isTest static void getReservationsNullTest() {
-        Guest__c newGuest = new Guest__c(
-            First_Name__c = 'Peter',
-            Last_Name__c = 'Mark',
-            Email__c = 'nulltestcase@test.com'
-        );
-        insert newGuest;
-  
-        Test.startTest();
-        	List<Reservation__c> reservations = UserMenuController.getReservations(newGuest.Id);
-        Test.stopTest();
-        
-        System.assertEquals(null, reservations);
-    }
-    
-    
-    
 }

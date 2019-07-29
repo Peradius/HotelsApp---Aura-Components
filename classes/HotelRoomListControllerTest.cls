@@ -35,7 +35,7 @@ private class HotelRoomListControllerTest {
         newRooms.add(newRoom);
 
             // occupied room 1
-        Room__c bookedRoom = new Room__c(
+        	Room__c bookedRoom = new Room__c(
             Name = 'Room 3',
             Hotel__c = newHotel.Id,
             Single_Beds__c = 1,
@@ -54,13 +54,20 @@ private class HotelRoomListControllerTest {
             Email__c = 'testcase@test.com'
         );
         insert newGuest;
+        
+        // INSERT BILLING
+        Billing__c newBilling = new Billing__c(
+        	    Name = 'Name'
+        );
+        insert newBilling;
 
         // INSERT RESERVATION
         Reservation__c newReservation = new Reservation__c(
             Check_In__c = Date.newInstance(2019,7,4),
             Check_Out__c = Date.newInstance(2019,7,7),
             Guest__c = newGuest.Id,
-            Room__c = bookedRoom.Id
+            Room__c = bookedRoom.Id,
+            Billing__c = newBilling.Id
         );
         insert newReservation;   
     }
@@ -80,10 +87,13 @@ private class HotelRoomListControllerTest {
         
         List<Room__c> availableRoomsAll = HotelRoomsListController.getRooms(hotelId, maxPrice, peopleInRoom, checkIn1, checkOut, isExecutive);
         List<Room__c> availableRoomsNoBooked = HotelRoomsListController.getRooms(hotelId, maxPrice, peopleInRoom, checkIn2, checkOut, isExecutive);
+        List<Room__c> noRooms = HotelRoomsListController.getRooms(hotelId, 5, peopleInRoom, checkIn2, checkOut, isExecutive);
+
 
         Test.stopTest();
 
         System.assertEquals(2, availableRoomsNoBooked.size());
         System.assertEquals(3, availableRoomsAll.size());
+        System.assertEquals(null, noRooms);
     }
 }

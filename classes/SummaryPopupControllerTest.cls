@@ -32,16 +32,15 @@ private class SummaryPopupControllerTest {
     
     @isTest static void createReservationTest() {
         Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
-        Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
-        Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
+        Room__c newRoom = [SELECT Id, Name FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
+        Guest__c newGuest = [SELECT Id, Last_Name__c, First_Name__c FROM Guest__c LIMIT 1];
         
         Test.startTest();
 
         Date checkIn = Date.newInstance(2019,7,4);
         Date checkOut = Date.newInstance(2019,7,7);
-        Decimal totalPrice = 100;
 
-        SummaryPopupController.createReservation(newGuest, newRoom, checkIn, checkOut, totalPrice);
+        SummaryPopupController.createReservation(newGuest, newRoom, checkIn, checkOut);
 
         Test.stopTest();
 

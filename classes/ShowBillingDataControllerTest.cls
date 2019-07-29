@@ -28,13 +28,20 @@ private class ShowBillingDataControllerTest {
             Email__c = 'testcase@test.com'
         );
         insert newGuest;
+        
+        // INSERT BILLING
+        Billing__c newBilling = new Billing__c(
+        	Name = 'Name'
+        );
+        insert newBilling;
 
         // INSERT RESERVATION
         Reservation__c newReservation = new Reservation__c(
             Check_In__c = Date.newInstance(2019,7,4),
             Check_Out__c = Date.newInstance(2019,7,7),
             Guest__c = newGuest.Id,
-            Room__c = newRoom.Id
+            Room__c = newRoom.Id,
+            Billing__c = newBilling.Id
         );
         insert newReservation;
         
@@ -45,30 +52,57 @@ private class ShowBillingDataControllerTest {
             Price__c = 20
         );
         insert newService;
-    
-        // INSERT BILLING
-        Billing__c newBilling = new Billing__c(
-            Name = newService.Name
-        );
-        insert newBilling;
     }
-    
+  
     @isTest static void ShowBillingDataControllerTest() {
         Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
         Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
         Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
         Reservation__c newReservation = [SELECT Id FROM Reservation__c WHERE Guest__c = :newGuest.Id AND Room__c = :newRoom.Id LIMIT 1];
-
-
+        Service__c newService = [SELECT Id FROM Service__c LIMIT 1];
+        Billing__c newBilling = [SELECT Id FROM Billing__c LIMIT 1];
+        
+        // INSERT SERVICE-BILLING
+        Service_Billing__c newServiceBilling = new Service_Billing__c(
+            Name = 'Name',
+            Service__c = newService.Id,
+            Billing__c = newBilling.Id
+        );
+        insert newServiceBilling;
+       
         Test.startTest();
 
         String reservationId = newReservation.Id;
-        List<Billing__c> billingList = ShowBillingDataController.getBillings(reservationId);
-
+        
+        List<Service_Billing__c> billingList = ShowBillingDataController.getBillings(reservationId);
+       
         Test.stopTest();
 
         System.assertEquals(1, billingList.size());
+    }
+    
+    @isTest static void emptyListTest() {
+        Hotel__c newHotel = [SELECT Id FROM Hotel__c LIMIT 1];
+        Room__c newRoom = [SELECT Id FROM Room__c WHERE Hotel__c = :newHotel.Id LIMIT 1];
+        Guest__c newGuest = [SELECT Id FROM Guest__c LIMIT 1];
+        Billing__c newBilling = [SELECT Id FROM Billing__c LIMIT 1];
+        
+        // INSERT RESERVATION 2
+        Reservation__c newReservation2 = new Reservation__c(
+            Check_In__c = Date.newInstance(2019,7,21),
+            Check_Out__c = Date.newInstance(2019,7,25),
+            Guest__c = newGuest.Id,
+            Room__c = newRoom.Id,
+            Billing__c = newBilling.Id
+        );
+        insert newReservation2;
+        
+        Test.startTest();
+        
+        List<Service_Billing__c> billingList = ShowBillingDataController.getBillings(newReservation2.Id);
+       
+        Test.stopTest();
 
-
+        System.assertEquals(null, billingList);
     }
 }

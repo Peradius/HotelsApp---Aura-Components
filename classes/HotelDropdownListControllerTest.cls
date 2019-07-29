@@ -70,4 +70,24 @@ private class HotelDropdownListControllerTest {
 
         System.assertEquals(3, hotelsTest.size());
     }
+    
+    @isTest static void getAllHotelsNull() {
+        Test.startTest();
+
+        List<Hotel__c> hotelsTest = HotelDropdownListController.getHotels(5, null);
+
+        Test.stopTest();
+
+        System.assertEquals(null, hotelsTest);
+    }
+    
+    @isTest static void getCityHotelsNull() {
+        Test.startTest();
+
+        List<Hotel__c> hotelsTest = HotelDropdownListController.getHotels(null, 'Wrocław');
+
+        Test.stopTest();
+
+        System.assertEquals(null, hotelsTest);
+    }
 }
