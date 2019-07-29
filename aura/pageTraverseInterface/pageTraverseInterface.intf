@@ -1,0 +1,3 @@
+<aura:interface description="Interface template">
+    <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
+</aura:interface>

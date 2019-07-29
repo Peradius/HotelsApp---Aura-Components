@@ -1,4 +1,4 @@
-<aura:component controller="UserMenuController" >
+<aura:component controller="UserMenuController" implements="c:pageTraverseInterface">
 	<aura:attribute name="guest" type="Guest__c" />
 	<aura:attribute name="loggedIn" type="Boolean" default="false" />
 	<aura:attribute name="reservations" type="Reservation__c[]" />

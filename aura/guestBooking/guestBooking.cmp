@@ -1,4 +1,4 @@
-<aura:component controller="GuestBookingController">
+<aura:component controller="GuestBookingController" implements="c:pageTraverseInterface">
     <aura:attribute name="hasAccountToggle" type="boolean" default="false"/>
     <aura:attribute name="email" type="String" />
     <aura:attribute name="emailNotFound" type="boolean" default="false" />
@@ -13,7 +13,6 @@
     }" />
 
     <aura:registerEvent name="sendGuestData" type="c:sendGuestData" />
-    <aura:registerEvent name="pageTraverseEvent" type="c:pageTraverseEvent" />
 
     <div class="slds-scope">
         <div class="slds-grid slds-p-around_medium">
